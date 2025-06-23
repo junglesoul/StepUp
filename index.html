@@ -15,33 +15,48 @@
   <style>
     :root {
       --primary: #ffffff;
-      --accent: #0ff; /* futuristic cyan glow */
+      --accent: #0ff;
       --bg-dark: #000000;
     }
+
     body {
       font-family: 'Montserrat', sans-serif;
-      background-color: var(--bg-dark);
       color: var(--primary);
+      background: url('background.png') no-repeat center center fixed;
+      background-size: cover;
     }
+
+    h1, h2, h3, h4 {
+      font-family: 'Futura', 'Trebuchet MS', 'Segoe UI', sans-serif;
+    }
+
     .glow {
       text-shadow: 0 0 10px var(--accent);
     }
+
     .btn {
       @apply uppercase font-bold py-2 px-6 rounded-full transition;
     }
+
     .btn-primary {
       @apply bg-white text-black hover:bg-gray-200;
     }
+
     .btn-outline {
       @apply border border-white hover:bg-white hover:text-black;
     }
+
+    .bg-glass {
+      background-color: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(10px);
+    }
   </style>
 </head>
-<body class="min-h-screen flex flex-col bg-black">
+<body class="min-h-screen flex flex-col">
 
   <!-- Header -->
-  <header class="w-full px-6 py-4 border-b border-white/10 bg-black sticky top-0 z-50 flex justify-between items-center">
-    <img src="StepUp2.png" alt="Step Up Logo" class="h-10" />
+  <header class="w-full px-6 py-4 border-b border-white/10 sticky top-0 z-50 bg-glass flex justify-between items-center">
+    <img src="Logo.png" alt="Step Up Logo" class="h-10" />
     <nav class="flex gap-4 text-sm font-semibold uppercase">
       <a href="#artists" class="hover:text-gray-400">Artists</a>
       <a href="#events" class="hover:text-gray-400">Events</a>
@@ -52,9 +67,9 @@
   </header>
 
   <!-- Hero -->
-  <section class="text-center py-24 px-6">
+  <section class="text-center py-24 px-6 bg-glass">
     <h1 class="text-5xl sm:text-6xl md:text-7xl font-bold tracking-wide glow">Step Up</h1>
-    <p class="mt-4 text-lg text-gray-400 max-w-xl mx-auto">
+    <p class="mt-4 text-lg text-gray-300 max-w-xl mx-auto">
       Crew chilena de Drum & Bass que impulsa la cultura rave con sonido futurista y beats rotos.
     </p>
     <div class="mt-8 flex justify-center gap-4">
@@ -64,55 +79,55 @@
   </section>
 
   <!-- Artists -->
-  <section id="artists" class="py-20 px-6 bg-black border-t border-white/10">
+  <section id="artists" class="py-20 px-6 bg-glass">
     <h2 class="text-4xl font-bold mb-12 text-center glow">Artists</h2>
     <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
       <div class="bg-white/5 p-6 rounded-lg text-center hover:bg-white/10 transition">
         <img src="Junglesoul.png" alt="Junglesoul" class="w-full h-64 object-cover mb-4 rounded-md" />
         <h3 class="text-xl font-semibold">Junglesoul</h3>
-        <p class="text-sm text-gray-400">Selector de Drum & Bass con enfoque tribal, ambient y basslines profundos.</p>
+        <p class="text-sm text-gray-300">Selector de Drum & Bass con enfoque tribal, ambient y basslines profundos.</p>
       </div>
       <div class="bg-white/5 p-6 rounded-lg text-center hover:bg-white/10 transition">
         <img src="Cherry.png" alt="Cherry" class="w-full h-64 object-cover mb-4 rounded-md" />
         <h3 class="text-xl font-semibold">Cherry</h3>
-        <p class="text-sm text-gray-400">DJ con influencias de minimal techno y sonidos industriales.</p>
+        <p class="text-sm text-gray-300">DJ con influencias de minimal techno y sonidos industriales.</p>
       </div>
       <div class="bg-white/5 p-6 rounded-lg text-center hover:bg-white/10 transition">
         <img src="LilJahn.png" alt="Lil Jahn" class="w-full h-64 object-cover mb-4 rounded-md" />
         <h3 class="text-xl font-semibold">Lil Jahn</h3>
-        <p class="text-sm text-gray-400">Productor futurista entre jungle, neurofunk y beats experimentales.</p>
+        <p class="text-sm text-gray-300">Productor futurista entre jungle, neurofunk y beats experimentales.</p>
       </div>
     </div>
   </section>
 
   <!-- Events -->
-  <section id="events" class="py-20 px-6 border-t border-white/10">
+  <section id="events" class="py-20 px-6 bg-glass">
     <h2 class="text-4xl font-bold mb-12 text-center glow">Events</h2>
     <div class="max-w-4xl mx-auto space-y-6">
       <div class="border border-white/10 rounded-lg p-6 hover:bg-white/5 transition">
         <h3 class="text-xl font-bold text-white mb-1">Step Up Launch Rave</h3>
-        <p class="text-sm text-gray-400">15 Julio 2025 · Club Subterráneo · Santiago</p>
-        <p class="text-sm text-gray-500 mt-2">Line-up: Junglesoul, Cherry, Lil Jahn</p>
+        <p class="text-sm text-gray-300">15 Julio 2025 · Club Subterráneo · Santiago</p>
+        <p class="text-sm text-gray-400 mt-2">Line-up: Junglesoul, Cherry, Lil Jahn</p>
       </div>
       <div class="border border-white/10 rounded-lg p-6 hover:bg-white/5 transition">
         <h3 class="text-xl font-bold text-white mb-1">Breakbeats al Atardecer</h3>
-        <p class="text-sm text-gray-400">29 Julio 2025 · Rooftop Los Leones</p>
-        <p class="text-sm text-gray-500 mt-2">Line-up: Invitados especiales + crew Step Up</p>
+        <p class="text-sm text-gray-300">29 Julio 2025 · Rooftop Los Leones</p>
+        <p class="text-sm text-gray-400 mt-2">Line-up: Invitados especiales + crew Step Up</p>
       </div>
     </div>
   </section>
 
   <!-- Podcasts -->
-  <section id="podcasts" class="py-20 px-6 border-t border-white/10 bg-black">
+  <section id="podcasts" class="py-20 px-6 bg-glass">
     <h2 class="text-4xl font-bold mb-12 text-center glow">Podcasts</h2>
     <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
       <div class="bg-white/5 p-4 rounded-lg">
         <iframe width="100%" height="120" src="https://player-widget.mixcloud.com/widget/iframe/?feed=%2FJunglistCL%2Fdj-junglesoul-live-at-organika-sessions-ft-cerveza-lunatica-08112024%2F" frameborder="0" allow="autoplay"></iframe>
-        <p class="mt-2 text-sm text-gray-400">DJ Junglesoul en vivo desde Cerveza Lunática</p>
+        <p class="mt-2 text-sm text-gray-300">DJ Junglesoul en vivo desde Cerveza Lunática</p>
       </div>
       <div class="bg-white/5 p-4 rounded-lg">
         <iframe width="100%" height="120" src="https://player-widget.mixcloud.com/widget/iframe/?feed=%2FJunglistCL%2Flil-jahn-live-at-organika-sessions-xl-22feb25%2F" frameborder="0" allow="autoplay"></iframe>
-        <p class="mt-2 text-sm text-gray-400">Lil Jahn con un set experimental desde XL Sessions</p>
+        <p class="mt-2 text-sm text-gray-300">Lil Jahn con un set experimental desde XL Sessions</p>
       </div>
     </div>
     <div class="text-center mt-8">
@@ -121,7 +136,7 @@
   </section>
 
   <!-- Gallery -->
-  <section id="gallery" class="py-20 px-6 border-t border-white/10 bg-black">
+  <section id="gallery" class="py-20 px-6 bg-glass">
     <h2 class="text-4xl font-bold mb-12 text-center glow">Gallery</h2>
     <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
       <img src="1 image gallery.png" class="rounded-lg hover:scale-105 transition" alt="Galería 1" />
@@ -131,7 +146,7 @@
   </section>
 
   <!-- Contact -->
-  <section id="contact" class="py-20 px-6 border-t border-white/10 bg-black">
+  <section id="contact" class="py-20 px-6 bg-glass">
     <h2 class="text-4xl font-bold mb-12 text-center glow">Contacto</h2>
     <form action="https://formsubmit.co/organikasessions@gmail.com" method="POST" class="max-w-2xl mx-auto space-y-4">
       <input type="hidden" name="_captcha" value="false" />
@@ -144,7 +159,7 @@
   </section>
 
   <!-- Footer -->
-  <footer class="text-center py-10 mt-auto border-t border-white/10 text-gray-500 text-sm">
+  <footer class="text-center py-10 mt-auto border-t border-white/10 text-gray-400 text-sm bg-glass">
     <p>© 2025 Step Up Crew – Santiago de Chile · Drum & Bass Movement</p>
     <div class="mt-4 flex justify-center gap-4 text-white text-lg">
       <a href="#" class="hover:text-gray-400"><i class="fab fa-instagram"></i></a>
