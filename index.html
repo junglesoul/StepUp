@@ -70,6 +70,15 @@
   <p class="mt-4 text-lg text-gray-300 max-w-xl mx-auto">
     Crew chilena de Drum & Bass que impulsa la cultura rave con sonido futurista y beats rotos.
   </p>
+
+  <!-- Inline Newsletter Box -->
+<div class="hidden lg:flex justify-center mt-8">
+  <form id="inline-newsletter-form" class="bg-white/10 backdrop-blur p-6 rounded-lg flex gap-4 items-center w-full max-w-2xl">
+    <input type="email" name="email" required placeholder="Ingresa tu correo" class="flex-1 px-4 py-2 rounded bg-black/50 text-white border border-white/20 focus:outline-none" />
+    <button type="submit" class="btn btn-primary">Suscribirme</button>
+  </form>
+</div>
+  
   <div class="mt-8 flex justify-center gap-4">
     <a href="#events" class="btn btn-primary">Próximos Eventos</a>
     <a href="#contact" class="btn btn-outline">Contacto</a>
@@ -269,6 +278,74 @@
       <a href="#" class="hover:text-gray-400"><i class="fab fa-youtube"></i></a>
     </div>
   </footer>
+  
+<!-- Newsletter Popup -->
+<div id="newsletter-popup" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 hidden">
+  <div class="bg-glass p-8 rounded-xl max-w-md text-center relative border border-white/10">
+    <button onclick="closePopup()" class="absolute top-2 right-4 text-white text-xl font-bold hover:text-gray-400">&times;</button>
+    <h2 class="text-2xl font-bold mb-2 glow">Únete a nuestro Newsletter</h2>
+    <p class="text-sm text-gray-300 mb-4">Recibe noticias de eventos, música y más. Sin spam, solo Drum & Bass.</p>
+    <form id="popup-newsletter-form" class="space-y-3">
+      <input type="email" name="email" required placeholder="Tu correo electrónico" class="w-full px-4 py-2 rounded bg-white/10 border border-white/20 text-white focus:outline-none" />
+      <button type="submit" class="btn btn-primary w-full">Suscribirme</button>
+    </form>
+  </div>
+</div>
 
+  <!-- Gracias Modal -->
+<div id="gracias-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 hidden">
+  <div class="bg-glass p-6 text-center rounded-lg border border-white/10 max-w-sm">
+    <h2 class="text-2xl font-bold text-white mb-2">¡Gracias por suscribirte!</h2>
+    <p class="text-sm text-gray-300 mb-4">Estás oficialmente en la lista de Step Up.</p>
+    <button onclick="closeGracias()" class="btn btn-primary">Cerrar</button>
+  </div>
+</div>
+
+  <script>
+  // Newsletter popup logic
+  function closePopup() {
+    document.getElementById('newsletter-popup').classList.add('hidden');
+    localStorage.setItem('newsletterShown', 'true');
+  }
+
+  function closeGracias() {
+    document.getElementById('gracias-modal').classList.add('hidden');
+    closePopup(); // also close newsletter popup if it's still open
+  }
+
+  window.addEventListener('load', () => {
+    if (!localStorage.getItem('newsletterShown')) {
+      setTimeout(() => {
+        document.getElementById('newsletter-popup').classList.remove('hidden');
+      }, 5000);
+    }
+  });
+
+  // Simulated submission logic
+  function handleFormSubmit(formId) {
+    const form = document.getElementById(formId);
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const email = form.querySelector('input[name=\"email\"]').value;
+
+      // Send using FormSubmit
+      fetch('https://formsubmit.co/ajax/junglistcl@gmail.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email })
+      }).then(() => {
+        document.getElementById('gracias-modal').classList.remove('hidden');
+        form.reset();
+      }).catch(() => {
+        alert('Hubo un error al suscribirte. Intenta de nuevo.');
+      });
+    });
+  }
+
+  handleFormSubmit('popup-newsletter-form');
+  handleFormSubmit('inline-newsletter-form');
+</script>
+
+  
 </body>
 </html>
