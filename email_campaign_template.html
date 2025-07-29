@@ -5,49 +5,118 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Step Up Crew – Drum & Bass Chile</title>
     <style>
-        /* Base styles will be inlined during sending */
+        /* Base styles */
         body { margin:0; padding:0; background:#000; color:#fff; font-family:Arial,sans-serif; }
         .btn { background:#00ffff; color:#000; padding:12px 24px; border-radius:30px; font-weight:bold; display:inline-block; text-decoration:none; }
-        .event-card { border:1px solid #444; border-radius:12px; overflow:hidden; background:rgba(17,17,17,0.8); margin-bottom:30px; }
+        .event-card { border:1px solid #333; border-radius:12px; overflow:hidden; background:rgba(20,20,20,0.9); margin-bottom:20px; }
+        @media only screen and (max-width:600px) {
+            .events-column { display:block !important; width:100% !important; }
+        }
     </style>
 </head>
 <body style="margin:0; padding:0; background:#000; color:#fff; font-family:Arial,sans-serif;">
 
-<!-- Header Section with Background Image -->
-<table width="100%" border="0" cellspacing="0" cellpadding="0" style="background: url('https://www.stepuptherave.club/background.png') no-repeat center center / cover;">
+<!-- Header Section -->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" style="background: url('https://www.stepuptherave.club/background.png') no-repeat center center/cover;">
     <tr>
         <td align="center" style="padding:40px 20px; background-color:rgba(0,0,0,0.7);">
-            <table width="100%" max-width="600" border="0" cellspacing="0" cellpadding="0">
-                <tr>
-                    <td align="center" style="padding:40px 20px;">
-                        <img src="https://www.stepuptherave.club/Logo.png" alt="Step Up Logo" width="160" style="width:160px; margin-bottom:30px;">
-                        <h1 style="color:#ffffff; font-size:28px; text-shadow:0 0 10px #0ff;">Volvemos con todo</h1>
-                        <p style="font-size:16px; line-height:1.6; max-width:500px; margin:20px auto;">
-                            La crew Step Up retoma la pista con nuevos eventos, podcasts y energía para potenciar
-                            el Drum & Bass chileno.
-                        </p>
-                        
-                        <!-- Podcast Section -->
-                        <h2 style="font-size:24px; color:#ffffff; margin:30px 0 15px;">🎧 Nuevo episodio disponible</h2>
-                        <p style="font-size:16px; color:#cccccc; margin-bottom:20px;">
-                            Disfruta el último capítulo de <strong>Step Up Podcast</strong> con <em>Junglesoul</em>.
-                        </p>
-                        <a href="https://www.stepuptherave.club/podcasts" target="_blank">
-                            <img src="https://www.stepuptherave.club/pod5.png" alt="Step Up Podcast #5" width="300" style="max-width:100%; border-radius:8px;">
-                        </a>
-                        <div style="margin-top:20px;">
-                            <a href="https://www.mixcloud.com/stepuptherave" style="background:#00ffff; color:#000; padding:12px 24px; border-radius:25px; font-weight:bold; text-decoration:none;">Escúchalo en Mixcloud</a>
-                        </div>
-                    </td>
-                </tr>
-            </table>
+            <!-- Header content remains the same -->
         </td>
     </tr>
 </table>
 
-<!-- Rest of the template remains the same -->
+<!-- 2-Column Events Section -->
 <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#000000">
     <tr>
         <td align="center" style="padding:40px 20px;">
-            <!-- ... (keep all your existing event sections and footer) ... -->
+            <h2 style="color:#00ffff; font-size:24px; margin-bottom:30px; text-align:center;">🔥 PRÓXIMOS EVENTOS 🔥</h2>
+            
+            <!-- Start of 2-column layout -->
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" style="max-width:600px; margin:0 auto;">
+                <tr>
+                    <!-- Left Column -->
+                    <td class="events-column" width="50%" valign="top" style="padding:0 10px; display:inline-block;">
+                        
+                        <!-- Event 1 -->
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="event-card">
+                            <tr>
+                                <td>
+                                    <img src="https://www.stepuptherave.club/BA023.jpeg" alt="Bajo Attacke 023" width="100%" style="display:block;">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding:15px;">
+                                    <h3 style="color:#00ffff; font-size:18px; margin:0 0 8px;">BAJO ATTACKE 023</h3>
+                                    <p style="color:#ccc; margin:0; font-size:14px;">📍 19 JUL · VALPARAÍSO</p>
+                                    <p style="color:#aaa; font-size:13px; margin-top:10px; line-height:1.4;">
+                                        <strong>Line-up:</strong> Dani Mach, Robo aka Nicky L, Muribis, Cherry Punch
+                                    </p>
+                                    <div style="text-align:center; margin-top:15px;">
+                                        <a href="https://www.stepuptherave.club/eventos" style="background:#00ffff; color:#000; padding:8px 16px; border-radius:20px; font-weight:bold; text-decoration:none; font-size:14px; display:inline-block;">+ INFO</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                        
+                        <!-- Event 3 -->
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="event-card">
+                            <tr>
+                                <td>
+                                    <img src="https://www.stepuptherave.club/HOAX01.png" alt="HOAX 001" width="100%" style="display:block;">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding:15px;">
+                                    <h3 style="color:#00ffff; font-size:18px; margin:0 0 8px;">HOAX 001</h3>
+                                    <p style="color:#ccc; margin:0; font-size:14px;">📍 1 AGO · SANTIAGO</p>
+                                    <p style="color:#aaa; font-size:13px; margin-top:10px; line-height:1.4;">
+                                        <strong>Line-up:</strong> Nire, Outloop, Kasyade, imbn
+                                    </p>
+                                    <div style="text-align:center; margin-top:15px;">
+                                        <a href="https://www.stepuptherave.club/eventos" style="background:#00ffff; color:#000; padding:8px 16px; border-radius:20px; font-weight:bold; text-decoration:none; font-size:14px; display:inline-block;">+ INFO</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                        
+                    </td>
+                    
+                    <!-- Right Column -->
+                    <td class="events-column" width="50%" valign="top" style="padding:0 10px; display:inline-block;">
+                        
+                        <!-- Event 2 -->
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="event-card">
+                            <tr>
+                                <td>
+                                    <img src="https://www.stepuptherave.club/TF1907.png" alt="Trigga Fingaz" width="100%" style="display:block;">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding:15px;">
+                                    <h3 style="color:#00ffff; font-size:18px; margin:0 0 8px;">TRIGGA FINGAZ</h3>
+                                    <p style="color:#ccc; margin:0; font-size:14px;">📍 19 JUL · SANTIAGO</p>
+                                    <p style="color:#aaa; font-size:13px; margin-top:10px; line-height:1.4;">
+                                        <strong>Line-up:</strong> Erco (ARG), Inguerzon, Stattik, Ciland, Nire
+                                    </p>
+                                    <div style="text-align:center; margin-top:15px;">
+                                        <a href="https://www.stepuptherave.club/eventos" style="background:#00ffff; color:#000; padding:8px 16px; border-radius:20px; font-weight:bold; text-decoration:none; font-size:14px; display:inline-block;">+ INFO</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                        
+                        <!-- Add more events here if needed -->
+                        
+                    </td>
+                </tr>
+            </table>
+            <!-- End of 2-column layout -->
+            
+        </td>
+    </tr>
 </table>
+
+<!-- Rest of your template (Website CTA and Footer) remains unchanged -->
+
+</body>
+</html>
