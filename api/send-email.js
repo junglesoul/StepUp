@@ -4,9 +4,9 @@ export default async function handler(req, res) {
   }
 
   const data = {
-    from: { email: "you@stepuptherave.club", name: "Step Up Crew" },
+    from: { email: "junglistcl@gmail.com", name: "Step Up Crew" },
     to: [
-      { email: "friend1@email.com" },
+      { email: "junglesoul.c@gmail.com" },
       { email: "friend2@email.com" }
     ],
     subject: "🔥 Test email from Step Up Crew",
@@ -18,7 +18,7 @@ export default async function handler(req, res) {
     const response = await fetch("https://api.mailersend.com/v1/email", {
       method: "POST",
       headers: {
-        "Authorization": `Bearer ${process.env.MAILERSEND_API_KEY}`,
+        "Authorization": `Bearer ${process.env.mlsn.2cd2938ae2f66f405d4163f3c17cb97485f3f1cf7c972dffabbc223ef60ad132}`,
         "Content-Type": "application/json"
       },
       body: JSON.stringify(data)
