@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title> Step Up Crew – Santiago de Chile · Drum & Bass Movement</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/a2e8f6a12e.js" crossorigin="anonymous"></script>
+
+  <style>
+    :root {
+      --primary: #ffffff;
+      --accent: #0ff;
+      --bg-dark: #000000;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--primary);
+      background: url('background.png') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    .glow {
+      text-shadow: 0 0 10px var(--accent);
+    }
+
+    .btn {
+      @apply uppercase font-bold py-2 px-6 rounded-full transition;
+    }
+
+    .btn-primary {
+      @apply bg-white text-black hover:bg-gray-200;
+    }
+
+    .btn-outline {
+      @apply border border-white hover:bg-white hover:text-black;
+    }
+
+    .bg-glass {
+      background-color: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(0,5px);
+    }
+  </style>
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="w-full px-6 py-4 border-b border-white/10 sticky top-0 z-50 bg-glass flex justify-between items-center">
+    <img src="Logo.png" alt="Step Up Logo" class="h-10" />
+    <nav class="flex gap-4 text-sm font-semibold uppercase">
+      <a href="#artists" class="hover:text-gray-400">ARTISTS</a>
+      <a href="#events" class="hover:text-gray-400">EVENTS</a>
+      <a href="#podcasts" class="hover:text-gray-400">PODCATS</a>
+      <a href="#gallery" class="hover:text-gray-400">GALLERY</a>
+      <a href="#contact" class="hover:text-gray-400">CONTACTO</a>
+    </nav>
+  </header>
+
+<!-- Hero -->
+<section class="text-center py-24 px-6 bg-glass">
+  <img src="Logo.png" alt="Step Up Logo" class="mx-auto w-72 sm:w-80 md:w-96 mb-6" />
+  <p class="mt-4 text-lg text-gray-300 max-w-xl mx-auto">
+    Crew chilena de Drum & Bass que impulsa la cultura rave con sonido futurista y beats rotos.
+  </p>  
+  <div class="mt-8 flex justify-center gap-4">
+    <a href="#events" class="btn btn-primary">Próximos Eventos</a>
+    <a href="#contact" class="btn btn-outline">Contacto</a>
+  </div>
+
+    <!-- Inline Newsletter Box -->
+<div class="hidden lg:flex justify-center mt-8">
+  <form id="inline-newsletter-form" class="bg-white/10 backdrop-blur p-6 rounded-lg flex gap-4 items-center w-full max-w-2xl">
+    <input type="email" name="email" required placeholder="Ingresa tu correo" class="flex-1 px-4 py-2 rounded bg-black/50 text-white border border-white/20 focus:outline-none" />
+    <button type="submit" class="btn btn-primary">Suscribirme</button>
+  </form>
+</div>
+  
+</section>
+
+
+  <!-- Artists -->
+  <section id="artists" class="py-20 px-6 bg-glass">
+    <h2 class="text-4xl font-bold mb-12 text-center glow">ARTISTS</h2>
+    <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      <div class="bg-white/5 p-6 rounded-lg text-center hover:bg-white/10 transition">
+        <img src="Junglesoul_image.png" alt="Junglesoul" class="w-full h-64 object-cover mb-4 rounded-md" />
+        <h3 class="text-xl font-semibold">Junglesoul</h3>
+        <p class="text-sm text-gray-300">Junglesoul, DJ y productor chileno con 17 años de trayectoria, impulsa la escena Drum & Bass desde Step Up, Organika Sessions y Shidzen Music. Mezcla Jungle, Footwork, Dubstep, pero por sobre todo Drum and Bass.</p>
+      </div>
+      <div class="bg-white/5 p-6 rounded-lg text-center hover:bg-white/10 transition">
+        <img src="Drumblack_image.png" alt="Drumblack" class="w-full h-64 object-cover mb-4 rounded-md" />
+        <h3 class="text-xl font-semibold">Drumblack</h3>
+        <p class="text-sm text-gray-300">DJ Drumblack, activo desde 2003, es referente del Drum and Bass chileno. Con técnica en vinilo, mezcla soulful, rolling y deep.</p>
+      </div>
+      <div class="bg-white/5 p-6 rounded-lg text-center hover:bg-white/10 transition">
+        <img src="Frantik_image.png" alt="Frantik" class="w-full h-64 object-cover mb-4 rounded-md" />
+        <h3 class="text-xl font-semibold">Frantik</h3>
+        <p class="text-sm text-gray-300">Frantik inicia en 1999 en la escena Drum & Bass de Barcelona. Productor y DJ, hoy difunde el sonido desde Junglist.cl y sellos globales, con raíces en Tiknology y Shidzen Music.</p>
+      </div>
+      <div class="bg-white/5 p-6 rounded-lg text-center hover:bg-white/10 transition">
+        <img src="Cherry_image.png" alt="Cherry" class="w-full h-64 object-cover mb-4 rounded-md" />
+        <h3 class="text-xl font-semibold">Cherry</h3>
+        <p class="text-sm text-gray-300">Cherry, DJ peruana de Cusco radicada en Chile desde 2019, destaca por su energía y técnica. Fusiona Drum & Bass y Tech con un enfoque futurista que rompe la pista en cada sesión.</p>
+      </div>
+        <div class="bg-white/5 p-6 rounded-lg text-center hover:bg-white/10 transition">
+        <img src="Robimess_image.png" alt="Robimess" class="w-full h-64 object-cover mb-4 rounded-md" />
+        <h3 class="text-xl font-semibold">Robimess</h3>
+        <p class="text-sm text-gray-300">Maximo Gatica aka Robimess, chileno, 37 años. DJ de drum and bass desde 2004. Ha tocado con Thrasher, Blacksoul y más. Miembro de Switch Technique e Igneon System. Promotor de Prspct y fundador de KillerDrumz en Chile.</p>
+      </div>
+      <div class="bg-white/5 p-6 rounded-lg text-center hover:bg-white/10 transition">
+        <img src="BassBrain_image.png" alt="Bass Brain" class="w-full h-64 object-cover mb-4 rounded-md" />
+        <h3 class="text-xl font-semibold">Bass Brain</h3>
+        <p class="text-sm text-gray-300">Claudio Vera aka BASS BRAIN Dj/Productor chileno de Concepción, +20 años de experiencia, especialista en Drum & BASS, Ragga Jungle y NeuroFunk (+170 bpms), fundador de ConceCityDNB e Hybrid Fest.</p>
+      </div>
+      <div class="bg-white/5 p-6 rounded-lg text-center hover:bg-white/10 transition">
+        <img src="Ortokore_image.png" alt="Ortokore" class="w-full h-64 object-cover mb-4 rounded-md" />
+        <h3 class="text-xl font-semibold">Ortokore</h3>
+        <p class="text-sm text-gray-300">Oscar Cartagena aka Ortokore: DJ, producer, chileno venezolano, drummer y bajista con +20 años de experiencia. Actuó en grandes festivales y escenarios nacionales e internacionales.</p>
+      </div>
+      <div class="bg-white/5 p-6 rounded-lg text-center hover:bg-white/10 transition">
+        <img src="FatPablo_image.png" alt="Fat Pablo" class="w-full h-64 object-cover mb-4 rounded-md" />
+        <h3 class="text-xl font-semibold">Fat Pablo</h3>
+        <p class="text-sm text-gray-300">Pablo Sepúlveda aka Fat Pablo, pionero del Jungle/DnB en Chile desde 1999. Tocó en Creamfields, Lollapalooza con Massive Attack, Dj Marky y más. Ganador premio PULSE 2008. Embajador @kayaunite, residente @casaconejo.cl y fundador de Caja de Ritmos Records</p>
+      </div>
+       <div class="bg-white/5 p-6 rounded-lg text-center hover:bg-white/10 transition">
+        <img src="Metlman_image.png" alt="Meltman" class="w-full h-64 object-cover mb-4 rounded-md" />
+        <h3 class="text-xl font-semibold">Meltman</h3>
+        <p class="text-sm text-gray-300">Cristian Reyes aka Meltman, DJ chileno radicado en España, comienza desde 2017, fusiona deep, liquid y jungle en sus sets. Crea atmósferas únicas, mezclando sonidos alegres y oscuros en un viaje musical diverso y envolvente.</p>
+      </div>
+    </div>
+  </section>
+
+<!-- Events -->
+<section id="events" class="py-20 px-6 bg-glass">
+  <h2 class="text-4xl font-bold mb-12 text-center glow">EVENTS</h2>
+
+  <!-- Centered image at natural size -->
+  <div class="flex justify-center mb-12">
+    <img src="EVENTS_DISCLAIMER.png" alt="Disclaimer" class="w-full max-w-3xl rounded-md shadow-lg" />
+  </div>
+
+  <!-- 2-column responsive grid -->
+  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
+    
+<!-- Event Card 3 -->
+    <div class="flex flex-col border border-white/10 rounded-lg p-6 hover:bg-white/5 transition">
+      <img src="SL02.png" alt="So Liquid 02" class="w-full max-h-96 object-cover mb-4 rounded-lg shadow" />
+      <h3 class="text-xl font-bold text-white mb-1">So Liquid 02</h3>
+      <p class="text-sm text-gray-300">6 Septiembre 2025 · Garrison Bar · Santiago</p>
+      <p class="text-sm text-gray-400 mt-2">Line-up: Fat Pablo vs Roach, Pi, Bristol, Drumblack. Hosted by: William C. Visuals by: Cubic.</p>
+      <div class="mt-auto pt-4 text-center">
+        <a href="https://www.passline.com/eventos/so-liquid-02?fbclid=PAZXh0bgNhZW0CMTEAAafwKCyF5ciYeEbuQi95uHRhD74gSPA63fZTIkgYWSzVNX_dYk6yiOC15gBcaQ_aem_YwY8ETuXMlfu4qFpyIgW4Q" target="_blank" class="btn btn-outline">Tickets acá</a>
+      </div>
+    </div>
+<!-- Event Card 3 -->
+    <div class="flex flex-col border border-white/10 rounded-lg p-6 hover:bg-white/5 transition">
+      <img src="TF2308.jpg" alt="TF 0208" class="w-full max-h-96 object-cover mb-4 rounded-lg shadow" />
+      <h3 class="text-xl font-bold text-white mb-1">Trigga Fingaz</h3>
+      <p class="text-sm text-gray-300">23 Agosto 2025 · Club Room · Santiago</p>
+      <p class="text-sm text-gray-400 mt-2">Line-up: Inguerzon, Triggered, Stomp, Zaulo, Luca Syn & GDS (ESP). Hosted by MC William C</p>
+      <div class="mt-auto pt-4 text-center">
+        <a href="https://ticketplus.cl/events/clubroom-presenta-drum-bass-trigga-fingaz-luca-syn-gds-sabado-23-agosto" target="_blank" class="btn btn-outline">Tickets acá</a>
+      </div>
+    </div>    
+  </div>
+</section>
+
+
+
+<!-- Podcasts -->
+<section id="podcasts" class="py-20 px-6 bg-glass">
+  <h2 class="text-4xl font-bold mb-12 text-center glow">PODCASTS</h2>
+
+  <!-- It’s a Junglist World Podcast -->
+  <h3 class="text-2xl font-semibold mb-6 text-center text-white">It’s a Junglist World Podcast</h3>
+  <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-8">
+    <div class="bg-white/5 p-4 rounded-lg">
+      <iframe width="100%" height="400" src="https://player-widget.mixcloud.com/widget/iframe/?feed=%2FJunglistCL%2Fits-a-junglist-world-podcast-10-bassassin-col%2F" frameborder="0" allow="encrypted-media; fullscreen; autoplay;"></iframe>
+    </div>
+    <div class="bg-white/5 p-4 rounded-lg">
+      <iframe width="100%" height="400" src="https://player-widget.mixcloud.com/widget/iframe/?feed=%2FJunglistCL%2Fits-a-junglist-world-podcast-9-swara-esp%2F" frameborder="0" allow="encrypted-media; fullscreen; autoplay;"></iframe>
+    </div>
+    <div class="bg-white/5 p-4 rounded-lg">
+      <iframe width="100%" height="400" src="https://player-widget.mixcloud.com/widget/iframe/?feed=%2FJunglistCL%2Fits-a-junglist-world-podcast-8-bianka-fr%2F" frameborder="0" allow="encrypted-media; fullscreen; autoplay;"></iframe>
+    </div>
+  </div>
+  <div class="text-center mb-16">
+    <a href="podcasts_page.html#junglist-world" class="btn btn-outline">Escuchar más</a>
+  </div>
+
+  <!-- Step Up Podcast on Junglist Sudaka Radio -->
+  <h3 class="text-2xl font-semibold mb-6 text-center text-white">Step Up Podcast on Junglist Sudaka Radio</h3>
+  <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-8">
+    <div class="bg-white/5 p-4 rounded-lg">
+      <iframe width="100%" height="400" src="https://player-widget.mixcloud.com/widget/iframe/?feed=%2FJunglistCL%2Fstep-up-podcast-5-mixed-by-junglesoul%2F" frameborder="0"></iframe>
+    </div>
+    <div class="bg-white/5 p-4 rounded-lg">
+      <iframe width="100%" height="400" src="https://player-widget.mixcloud.com/widget/iframe/?feed=%2FJunglistCL%2Fstep-up-podcast-2-hosted-by-junglesoul-junglist-sudaka-radio-31102024%2F" frameborder="0" allow="encrypted-media; fullscreen; autoplay;"></iframe>
+    </div>
+    <div class="bg-white/5 p-4 rounded-lg">
+      <iframe width="100%" height="400" src="https://player-widget.mixcloud.com/widget/iframe/?feed=%2FJunglistCL%2Fstep-up-podcast-hosted-by-junglesoul-junglist-sudaka-radio-09262024%2F" frameborder="0" allow="encrypted-media; fullscreen; autoplay;"></iframe>  
+    </div>
+  </div>
+  <div class="text-center mb-16">
+    <a href="podcasts_page.html#step-up" class="btn btn-outline">Escuchar más</a>
+  </div>
+
+</section>
+
+  <!-- Gallery -->
+  <section id="gallery" class="py-20 px-6 bg-glass">
+    <h2 class="text-4xl font-bold mb-12 text-center glow">GALLERY</h2>
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+      <img src="Gallery1.jpeg" class="rounded-lg hover:scale-105 transition" alt="Galería 1" />
+      <img src="Gallery2.jpeg" class="rounded-lg hover:scale-105 transition" alt="Galería 2" />
+      <img src="Gallery3.jpeg" class="rounded-lg hover:scale-105 transition" alt="Galería 3" />
+      <img src="Gallery4.jpeg" class="rounded-lg hover:scale-105 transition" alt="Galería 4" />
+      <img src="Gallery5.jpeg" class="rounded-lg hover:scale-105 transition" alt="Galería 5" />
+      <img src="Gallery6.jpeg" class="rounded-lg hover:scale-105 transition" alt="Galería 6" />
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="py-20 px-6 bg-glass">
+    <h2 class="text-4xl font-bold mb-12 text-center glow">CONTACTO</h2>
+    <form action="https://formsubmit.co/organikasessions@gmail.com" method="POST" class="max-w-2xl mx-auto space-y-4">
+      <input type="hidden" name="_captcha" value="false" />
+      <input type="hidden" name="_next" value="https://organikasessions.com/gracias_newsletter.html" />
+      <input type="text" name="name" required placeholder="Tu nombre" class="w-full px-4 py-3 rounded bg-white/10 border border-white/20 focus:outline-none" />
+      <input type="email" name="email" required placeholder="Tu correo electrónico" class="w-full px-4 py-3 rounded bg-white/10 border border-white/20 focus:outline-none" />
+      <textarea name="message" rows="4" required placeholder="Escribe tu mensaje aquí..." class="w-full px-4 py-3 rounded bg-white/10 border border-white/20 focus:outline-none"></textarea>
+      <button type="submit" class="btn btn-primary w-full">Enviar Mensaje</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center py-10 mt-auto border-t border-white/10 text-gray-400 text-sm bg-glass">
+    <p>© 2025 Step Up Crew – Santiago de Chile · Drum & Bass Movement</p>
+    <div class="mt-4 flex justify-center gap-4 text-white text-lg">
+      <a href="#" class="hover:text-gray-400"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="hover:text-gray-400"><i class="fab fa-soundcloud"></i></a>
+      <a href="#" class="hover:text-gray-400"><i class="fab fa-youtube"></i></a>
+    </div>
+  </footer>
+  
+<!-- Newsletter Popup -->
+<div id="newsletter-popup" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 hidden">
+  <div class="bg-glass p-8 rounded-xl max-w-md text-center relative border border-white/10">
+    <button onclick="closePopup()" class="absolute top-2 right-4 text-white text-xl font-bold hover:text-gray-400">&times;</button>
+    <h2 class="text-2xl font-bold mb-2 glow">Únete a nuestro Newsletter</h2>
+    <p class="text-sm text-gray-300 mb-4">Recibe noticias de eventos, música y más. Sin spam, solo Drum & Bass.</p>
+    <form id="popup-newsletter-form" class="space-y-3">
+      <input type="email" name="email" required placeholder="Tu correo electrónico" class="w-full px-4 py-2 rounded bg-white/10 border border-white/20 text-white focus:outline-none" />
+      <button type="submit" class="btn btn-primary w-full">Suscribirme</button>
+    </form>
+  </div>
+</div>
+
+  <!-- Gracias Modal -->
+<div id="gracias-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 hidden">
+  <div class="bg-glass p-6 text-center rounded-lg border border-white/10 max-w-sm">
+    <h2 class="text-2xl font-bold text-white mb-2">¡Gracias por suscribirte!</h2>
+    <p class="text-sm text-gray-300 mb-4">Estás oficialmente en la lista de Step Up.</p>
+    <button onclick="closeGracias()" class="btn btn-primary">Cerrar</button>
+  </div>
+</div>
+
+  <script>
+  // Newsletter popup logic
+  function closePopup() {
+    document.getElementById('newsletter-popup').classList.add('hidden');
+    localStorage.setItem('newsletterShown', 'true');
+  }
+
+  function closeGracias() {
+    document.getElementById('gracias-modal').classList.add('hidden');
+    closePopup(); // also close newsletter popup if it's still open
+  }
+
+  window.addEventListener('load', () => {
+    if (!localStorage.getItem('newsletterShown')) {
+      setTimeout(() => {
+        document.getElementById('newsletter-popup').classList.remove('hidden');
+      }, 5000);
+    }
+  });
+
+  // Simulated submission logic
+  function handleFormSubmit(formId) {
+    const form = document.getElementById(formId);
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const email = form.querySelector('input[name=\"email\"]').value;
+
+      // Send using FormSubmit
+      fetch('https://formsubmit.co/ajax/junglistcl@gmail.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email })
+      }).then(() => {
+        document.getElementById('gracias-modal').classList.remove('hidden');
+        form.reset();
+      }).catch(() => {
+        alert('Hubo un error al suscribirte. Intenta de nuevo.');
+      });
+    });
+  }
+
+  handleFormSubmit('popup-newsletter-form');
+  handleFormSubmit('inline-newsletter-form');
+</script>
+
+  
+</body>
+</html>
