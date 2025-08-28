@@ -15,7 +15,7 @@ export default async function handler(req, res) {
     const { to, subject, text, html } = req.body;
 
     const data = {
-      from: { email: "junglistcl@gmail.com", name: "Step Up Crew" },
+      from: { email: "info@stepuptherave.club", name: "Step Up Crew" },
       to: to || [{ email: "junglesoul.c@gmail.com" }],
       subject: subject || "🔥 Test email from Step Up Crew",
       text: text || "Hola! Esto es un test de MailerSend desde Vercel ✅",
