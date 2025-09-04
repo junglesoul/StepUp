@@ -1,5 +1,5 @@
 // api/send-email.js
-import brevo from '@getbrevo/brevo'; // Make sure to install the package: npm install @getbrevo/brevo
+import brevo from '@getbrevo/brevo';
 
 export default async function handler(req, res) {
   // Handle preflight requests (CORS)
@@ -23,14 +23,13 @@ export default async function handler(req, res) {
     // 1. Configure the Brevo API client
     const defaultClient = brevo.ApiClient.instance;
     const apiKeyAuth = defaultClient.authentications['api-key'];
-    apiKeyAuth.apiKey = process.env.BREVO_API_KEY; // Your Brevo API key from Vercel env vars
+    apiKeyAuth.apiKey = process.env.BREVO_API_KEY;
 
     // 2. Create a new API instance
     const apiInstance = new brevo.TransactionalEmailsApi();
 
     // 3. Prepare the email data in Brevo's format
     const sendSmtpEmail = new brevo.SendSmtpEmail();
-
     sendSmtpEmail.sender = { email: "info@stepuptherave.club", name: "Step Up Crew" };
     sendSmtpEmail.to = to || [{ email: "junglesoul.c@gmail.com" }];
     sendSmtpEmail.subject = subject || "🔥 Test email from Step Up Crew";
@@ -48,8 +47,6 @@ export default async function handler(req, res) {
 
   } catch (error) {
     console.error("Brevo API error:", error);
-
-    // Brevo SDK errors often have details in `response.body`
     const errorMessage = error?.response?.body?.message || error.message;
     
     res.status(500).json({ 
