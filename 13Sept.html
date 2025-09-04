@@ -224,13 +224,14 @@ async function sendTest() {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
+      sender: { email: "you@yourdomain.com", name: "Step Up Events" },
       to: [
-        { email: "junglesoul.c@gmail.com" },
-        { email: "" }
+        { email: "junglesoul.c@gmail.com", name: "Jungle Soul" },
+        { email: "friend2@email.com", name: "Friend 2" }
       ],
       subject: "🔥 Test desde el botón",
-      text: "Hola! Este es un correo enviado desde el botón en la web ✅",
-      html: `
+      textContent: "Hola! Este es un correo enviado desde el botón en la web ✅",
+      htmlContent: `
         <!DOCTYPE html>
         <html>
         <head>
@@ -246,7 +247,7 @@ async function sendTest() {
               <td align="center">
 
                 <!-- Hero Image -->
-                <img src="https://stepuptherave.club/WPTG1309.png" alt="Background Banner" width="100%" style="max-width: 600px; display: block; border: 0; margin: 0 auto;" />
+                <img src="https://yourdomain.com/WPTG1309.png" alt="Background Banner" width="100%" style="max-width: 600px; display: block; border: 0; margin: 0 auto;" />
 
                 <!-- Container -->
                 <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="max-width: 600px; margin: 0 auto; background-color:#111111; border-radius: 12px; overflow: hidden;">
@@ -274,7 +275,7 @@ async function sendTest() {
                   <!-- Flyer -->
                   <tr>
                     <td align="center" style="padding: 20px;">
-                      <img src="https://stepuptherave.club/TG1309.png" alt="Trigga Fingaz Flyer" width="100%" style="max-width: 500px; height: auto; border-radius: 10px; display: block; margin: 0 auto; box-shadow: 0 4px 12px rgba(0,0,0,0.4);" />
+                      <img src="https://yourdomain.com/TG1309.png" alt="Trigga Fingaz Flyer" width="100%" style="max-width: 500px; height: auto; border-radius: 10px; display: block; margin: 0 auto; box-shadow: 0 4px 12px rgba(0,0,0,0.4);" />
                     </td>
                   </tr>
                 </table>
@@ -302,6 +303,7 @@ async function sendTest() {
 </script>
 
 <button onclick="sendTest()">Enviar test</button>
+
 
 
   
