@@ -1,0 +1,15 @@
+{
+  "name": "stepup-email-api",
+  "version": "1.0.0",
+  "description": "Serverless API to send emails via Brevo",
+  "main": "api/send-email.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@getbrevo/brevo": "^1.0.0"
+  },
+  "keywords": ["vercel", "serverless", "brevo", "email"],
+  "author": "",
+  "license": "ISC"
+}
