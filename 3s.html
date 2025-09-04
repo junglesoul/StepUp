@@ -165,16 +165,28 @@
             color: #0066cc;
             margin-bottom: 10px;
         }
+        .email-preview {
+            background-color: #000;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .email-preview-content {
+            background-color: #111;
+            padding: 20px;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Step Up Events - Brevo Email Sender</h1>
-        <p class="description">Solución basada en la documentación oficial de la API de Brevo.</p>
+        <p class="description">Solución completa basada en la documentación oficial de la API de SendinBlue/Brevo.</p>
         
         <div class="api-info">
-            <h3>Estructura de la API de Brevo</h3>
-            <p>Según la documentación, la API espera una solicitud con esta estructura:</p>
+            <h3>Estructura Correcta de la API</h3>
+            <p>Según la documentación, la API espera una solicitud con esta estructura exacta:</p>
             <pre>{
   "sender": {
     "name": "Sender Name",
@@ -187,7 +199,11 @@
     }
   ],
   "subject": "Email Subject",
-  "htmlContent": "&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;p&gt;Hello!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+  "htmlContent": "&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;p&gt;Hello!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;",
+  "headers": {
+    "X-Mailin-custom": "custom_header_1:custom_value_1",
+    "charset": "iso-8859-1"
+  }
 }</pre>
         </div>
         
@@ -252,6 +268,16 @@
             </div>
         </div>
         
+        <h2>Vista Previa del Email</h2>
+        <div class="email-preview">
+            <p><strong>Asunto:</strong> <span id="preview-subject">🔥 Prueba de correo HTML con Brevo</span></p>
+            <p><strong>De:</strong> <span id="preview-sender">Step Up Events (you@yourdomain.com)</span></p>
+            <p><strong>Para:</strong> <span id="preview-recipient">Jungle Soul (junglesoul.c@gmail.com)</span></p>
+            <div class="email-preview-content" id="preview-content">
+                <!-- Content will be populated by JavaScript -->
+            </div>
+        </div>
+        
         <div class="instructions">
             <h3>Instrucciones</h3>
             <p>1. Verifica que todos los campos estén completos</p>
@@ -262,9 +288,10 @@
         
         <div class="solution">
             <h3>Cambios Realizados</h3>
-            <p>He ajustado la solicitud para que coincida exactamente con el formato esperado por la API de Brevo:</p>
+            <p>He ajustado la solicitud para que coincida exactamente con el formato esperado por la API de SendinBlue/Brevo:</p>
             <ul>
                 <li>Estructura JSON exacta como en la documentación</li>
+                <li>Incluido el objeto "headers" requerido</li>
                 <li>Contenido HTML completo con etiquetas html, head y body</li>
                 <li>Manejo adecuado de caracteres especiales</li>
                 <li>Inclusión de todos los campos requeridos</li>
@@ -273,6 +300,42 @@
     </div>
 
     <script>
+        // Update preview when inputs change
+        function updatePreview() {
+            const senderEmail = document.getElementById('senderEmail').value;
+            const senderName = document.getElementById('senderName').value;
+            const recipientEmail = document.getElementById('recipientEmail').value;
+            const recipientName = document.getElementById('recipientName').value;
+            const subject = document.getElementById('subject').value;
+            const htmlContent = document.getElementById('htmlContent').value;
+            
+            document.getElementById('preview-subject').textContent = subject;
+            document.getElementById('preview-sender').textContent = `${senderName} (${senderEmail})`;
+            document.getElementById('preview-recipient').textContent = `${recipientName} (${recipientEmail})`;
+            
+            // Extract body content for preview
+            const bodyStart = htmlContent.indexOf('<body');
+            const bodyEnd = htmlContent.indexOf('</body>');
+            if (bodyStart !== -1 && bodyEnd !== -1) {
+                const bodyTagEnd = htmlContent.indexOf('>', bodyStart) + 1;
+                const bodyContent = htmlContent.substring(bodyTagEnd, bodyEnd);
+                document.getElementById('preview-content').innerHTML = bodyContent;
+            } else {
+                document.getElementById('preview-content').innerHTML = htmlContent;
+            }
+        }
+        
+        // Set up event listeners for preview
+        document.getElementById('senderEmail').addEventListener('input', updatePreview);
+        document.getElementById('senderName').addEventListener('input', updatePreview);
+        document.getElementById('recipientEmail').addEventListener('input', updatePreview);
+        document.getElementById('recipientName').addEventListener('input', updatePreview);
+        document.getElementById('subject').addEventListener('input', updatePreview);
+        document.getElementById('htmlContent').addEventListener('input', updatePreview);
+        
+        // Initialize preview
+        updatePreview();
+        
         async function sendTest() {
             const senderEmail = document.getElementById('senderEmail').value;
             const senderName = document.getElementById('senderName').value;
@@ -311,7 +374,11 @@
                         }
                     ],
                     subject: subject,
-                    htmlContent: htmlContent
+                    htmlContent: htmlContent,
+                    headers: {
+                        "X-Mailin-custom": "custom_header_1:custom_value_1",
+                        "charset": "iso-8859-1"
+                    }
                 };
                 
                 // Mostrar lo que se está enviando
