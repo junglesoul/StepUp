@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Step Up Events - HTML Email Tester</title>
+    <title>Step Up Events - HTML Email Debugger</title>
     <style>
         * {
             margin: 0;
@@ -87,22 +87,22 @@
             border: 1px solid #cc0000;
             color: #ff6666;
         }
-        .email-preview {
-            background-color: #000;
+        .debug {
+            background-color: rgba(100, 100, 100, 0.2);
+            border: 1px solid #666666;
             border-radius: 8px;
-            padding: 20px;
+            padding: 15px;
             margin: 20px 0;
         }
-        .email-preview img {
-            max-width: 100%;
-            border-radius: 6px;
-            margin: 10px 0;
+        .debug h3 {
+            color: #cccccc;
+            margin-bottom: 10px;
         }
-        .code-container {
+        .debug-info {
             background-color: #2d2d2d;
             border-radius: 8px;
-            padding: 20px;
-            margin-top: 20px;
+            padding: 15px;
+            margin-top: 10px;
             overflow-x: auto;
         }
         pre {
@@ -185,12 +185,24 @@
             border-radius: 0 0 4px 4px;
             background-color: #2d2d2d;
         }
+        .email-preview {
+            background-color: #000;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .email-preview-content {
+            background-color: #111;
+            padding: 20px;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Step Up Events - HTML Email Tester</h1>
-        <p class="description">Ahora que los emails se envían correctamente, vamos a solucionar el problema de visualización del contenido HTML.</p>
+        <h1>Step Up Events - HTML Email Debugger</h1>
+        <p class="description">Vamos a solucionar el problema de visualización del contenido HTML en los emails.</p>
         
         <div class="solution">
             <h3>Problema Identificado</h3>
@@ -200,6 +212,7 @@
                 <li>Problemas de formato en el contenido HTML</li>
                 <li>Falta de etiquetas HTML esenciales (html, head, body)</li>
                 <li>Filtrado de contenido por el cliente de correo</li>
+                <li>Problemas con la API de Brevo al procesar el HTML</li>
             </ul>
         </div>
         
@@ -222,145 +235,124 @@
         <div class="tab">
             <button class="tablinks active" onclick="openTab(event, 'SimpleTab')">Contenido Simple</button>
             <button class="tablinks" onclick="openTab(event, 'FullTab')">HTML Completo</button>
+            <button class="tablinks" onclick="openTab(event, 'TextTab')">Solo Texto</button>
         </div>
         
         <div id="SimpleTab" class="tabcontent" style="display:block;">
             <div class="input-group">
                 <label for="htmlContent">Contenido HTML:</label>
-                <textarea id="htmlContent">&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;meta charset="utf-8"&gt;
-    &lt;title&gt;Step Up Events&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;div style="max-width: 600px; margin: 0 auto; background-color: #111; color: #fff; padding: 20px; font-family: Arial, sans-serif;"&gt;
-        &lt;h1 style="color: #00ffff;"&gt;Step Up Events&lt;/h1&gt;
-        &lt;p&gt;Este es un email de prueba con contenido HTML.&lt;/p&gt;
-        &lt;p&gt;Si puedes ver este mensaje, el HTML se está mostrando correctamente.&lt;/p&gt;
-        &lt;p&gt;&lt;strong&gt;Próximo evento:&lt;/strong&gt; Step Up x Trigga Fingaz&lt;/p&gt;
-        &lt;p&gt;&lt;strong&gt;Fecha:&lt;/strong&gt; 13 de Septiembre&lt;/p&gt;
-        &lt;a href="https://ticketplus.cl/events/clubroom-presenta-drum-bass-trigga-fingaz-sabado-13-septiembre" 
-           style="display: inline-block; background-color: #00cccc; color: #000; padding: 10px 20px; text-decoration: none; border-radius: 4px; margin-top: 15px;"&gt;
+                <textarea id="htmlContent"><!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Step Up Events</title>
+</head>
+<body>
+    <div style="max-width: 600px; margin: 0 auto; background-color: #111; color: #fff; padding: 20px; font-family: Arial, sans-serif;">
+        <h1 style="color: #00ffff;">Step Up Events</h1>
+        <p>Este es un email de prueba con contenido HTML.</p>
+        <p>Si puedes ver este mensaje, el HTML se está mostrando correctamente.</p>
+        <p><strong>Próximo evento:</strong> Step Up x Trigga Fingaz</p>
+        <p><strong>Fecha:</strong> 13 de Septiembre</p>
+        <a href="https://ticketplus.cl/events/clubroom-presenta-drum-bass-trigga-fingaz-sabado-13-septiembre" 
+           style="display: inline-block; background-color: #00cccc; color: #000; padding: 10px 20px; text-decoration: none; border-radius: 4px; margin-top: 15px;">
             🎟️ Comprar Entradas
-        &lt;/a&gt;
-    &lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;</textarea>
+        </a>
+    </div>
+</body>
+</html></textarea>
             </div>
         </div>
         
         <div id="FullTab" class="tabcontent">
             <div class="input-group">
                 <label for="fullHtmlContent">HTML Completo (Evento):</label>
-                <textarea id="fullHtmlContent">&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;meta charset="utf-8"&gt;
-    &lt;title&gt;Step Up Events&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#000000" style="background-color:#000000; margin:0; padding:0;"&gt;
-        &lt;tr&gt;
-            &lt;td align="center"&gt;
-                &lt;img src="https://stepuptherave.club/WPTG1309.png" alt="Background Banner" width="100%" style="max-width: 600px; display: block; border: 0; margin: 0 auto;" /&gt;
-                &lt;table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="max-width: 600px; margin: 0 auto; background-color:#111111; border-radius: 12px; overflow: hidden;"&gt;
-                    &lt;tr&gt;
-                        &lt;td align="center" style="padding: 30px 20px 20px 20px; color: #ffffff;"&gt;
-                            &lt;h1 style="font-size: 26px; line-height: 1.3; font-weight: bold; margin: 0 0 20px 0;"&gt;
+                <textarea id="fullHtmlContent"><!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Step Up Events</title>
+</head>
+<body>
+    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#000000" style="background-color:#000000; margin:0; padding:0;">
+        <tr>
+            <td align="center">
+                <img src="https://stepuptherave.club/WPTG1309.png" alt="Background Banner" width="100%" style="max-width: 600px; display: block; border: 0; margin: 0 auto;" />
+                <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="max-width: 600px; margin: 0 auto; background-color:#111111; border-radius: 12px; overflow: hidden;">
+                    <tr>
+                        <td align="center" style="padding: 30px 20px 20px 20px; color: #ffffff;">
+                            <h1 style="font-size: 26px; line-height: 1.3; font-weight: bold; margin: 0 0 20px 0;">
                                 Estamos de vuelta: Step Up x Trigga Fingaz
-                            &lt;/h1&gt;
-                            &lt;p style="font-size: 16px; line-height: 1.5; color: #cccccc; margin: 0 0 30px 0;"&gt;
+                            </h1>
+                            <p style="font-size: 16px; line-height: 1.5; color: #cccccc; margin: 0 0 30px 0;">
                                 Una noche de colaboración inédita, energía brutal y basslines pesados.
-                            &lt;/p&gt;
-                            &lt;a href="https://ticketplus.cl/events/clubroom-presenta-drum-bass-trigga-fingaz-sabado-13-septiembre"
+                            </p>
+                            <a href="https://ticketplus.cl/events/clubroom-presenta-drum-bass-trigga-fingaz-sabado-13-septiembre"
                                target="_blank"
-                               style="display: inline-block; background-color: transparent; border: 2px solid #00ffff; color: #00ffff; text-decoration: none; padding: 12px 24px; font-weight: bold; font-size: 16px; border-radius: 30px;"&gt;
+                               style="display: inline-block; background-color: transparent; border: 2px solid #00ffff; color: #00ffff; text-decoration: none; padding: 12px 24px; font-weight: bold; font-size: 16px; border-radius: 30px;">
                                 🎟️ Consigue tus tickets ahora
-                            &lt;/a&gt;
-                        &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td align="center" style="padding: 20px;"&gt;
-                            &lt;img src="https://stepuptherave.club/TG1309.png" alt="Trigga Fingaz Flyer" width="100%" style="max-width: 500px; height: auto; border-radius: 10px; display: block; margin: 0 auto; box-shadow: 0 4px 12px rgba(0,0,0,0.4);" /&gt;
-                        &lt;/td&gt;
-                    &lt;/tr&gt;
-                &lt;/table&gt;
-            &lt;/td&gt;
-        &lt;/tr&gt;
-    &lt;/table&gt;
-&lt;/body&gt;
-&lt;/html&gt;</textarea>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center" style="padding: 20px;">
+                            <img src="https://stepuptherave.club/TG1309.png" alt="Trigga Fingaz Flyer" width="100%" style="max-width: 500px; height: auto; border-radius: 10px; display: block; margin: 0 auto; box-shadow: 0 4px 12px rgba(0,0,0,0.4);" />
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html></textarea>
             </div>
         </div>
         
-        <button class="test-button" onclick="sendTest()">Enviar Email con HTML</button>
+        <div id="TextTab" class="tabcontent">
+            <div class="input-group">
+                <label for="textContent">Contenido de Texto Plano:</label>
+                <textarea id="textContent">Este es un email de prueba con solo texto.
+
+Step Up Events presenta:
+Step Up x Trigga Fingaz
+
+Fecha: 13 de Septiembre
+Lugar: Por confirmar
+
+Una noche de colaboración inédita, energía brutal y basslines pesados.
+
+🎟️ Consigue tus tickets ahora: https://ticketplus.cl/events/clubroom-presenta-drum-bass-trigga-fingaz-sabado-13-septiembre</textarea>
+            </div>
+        </div>
+        
+        <button class="test-button" onclick="sendTest()">Enviar Email de Prueba</button>
         
         <div id="status" class="status"></div>
         
-        <div class="instructions">
-            <h3>Instrucciones</h3>
-            <p>1. Selecciona el tipo de contenido HTML que deseas enviar</p>
-            <p>2. Haz clic en "Enviar Email con HTML"</p>
-            <p>3. Revisa tu bandeja de entrada para verificar que el HTML se muestra correctamente</p>
-            <p>4. Si el HTML simple funciona, prueba con el HTML completo del evento</p>
+        <div class="debug">
+            <h3>Información de Depuración</h3>
+            <p>Última respuesta de la API:</p>
+            <div class="debug-info">
+                <pre id="debug-info">Esperando prueba...</pre>
+            </div>
         </div>
         
-        <h2>Código de Solución</h2>
-        <div class="code-container">
-            <pre>
-// Solución para el contenido HTML en emails
-async function sendTest() {
-    const email = document.getElementById('email').value;
-    const name = document.getElementById('name').value;
-    const subject = document.getElementById('subject').value;
-    
-    // Obtener el contenido HTML según la pestaña activa
-    let htmlContent;
-    if (document.getElementById('SimpleTab').style.display === 'block') {
-        htmlContent = document.getElementById('htmlContent').value;
-    } else {
-        htmlContent = document.getElementById('fullHtmlContent').value;
-    }
-    
-    // Validar email
-    if (!email || !email.includes('@')) {
-        alert('Por favor, introduce un email válido');
-        return;
-    }
-    
-    const statusDiv = document.getElementById('status');
-    statusDiv.style.display = 'block';
-    statusDiv.className = 'status';
-    statusDiv.textContent = 'Enviando email...';
-    
-    try {
-        const response = await fetch("https://step-up-eight.vercel.app/api/send-email", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                sender: { email: "you@yourdomain.com", name: "Step Up Events" },
-                to: [{ email: email, name: name }],
-                subject: subject,
-                htmlContent: htmlContent
-            })
-        });
+        <div class="instructions">
+            <h3>Estrategia de Prueba</h3>
+            <p>1. Primero prueba con el contenido de texto plano para verificar que el problema no es con HTML</p>
+            <p>2. Si el texto plano funciona, prueba con el HTML simple</p>
+            <p>3. Finalmente, prueba con el HTML completo del evento</p>
+            <p>4. Revisa la información de depuración para identificar posibles problemas</p>
+        </div>
         
-        const result = await response.json();
-        
-        if (response.ok) {
-            statusDiv.textContent = "✅ Email enviado! Revisa tu bandeja.";
-            statusDiv.classList.add('success');
-        } else {
-            statusDiv.textContent = "❌ Error: " + (result.error || JSON.stringify(result));
-            statusDiv.classList.add('error');
-        }
-    } catch (error) {
-        statusDiv.textContent = "❌ Error de conexión: " + error.message;
-        statusDiv.classList.add('error');
-    }
-}
-            </pre>
+        <h2>Vista Previa del Email</h2>
+        <div class="email-preview">
+            <p><strong>Asunto:</strong> <span id="preview-subject">🔥 Prueba de correo HTML</span></p>
+            <p><strong>Destinatario:</strong> <span id="preview-to">Jungle Soul (junglesoul.c@gmail.com)</span></p>
+            <p><strong>Tipo de contenido:</strong> <span id="preview-type">HTML Simple</span></p>
+            <div class="email-preview-content" id="preview-content">
+                <!-- Content will be populated by JavaScript -->
+            </div>
         </div>
     </div>
 
@@ -377,19 +369,73 @@ async function sendTest() {
             }
             document.getElementById(tabName).style.display = "block";
             evt.currentTarget.className += " active";
+            updatePreview();
         }
+        
+        function updatePreview() {
+            const email = document.getElementById('email').value;
+            const name = document.getElementById('name').value;
+            const subject = document.getElementById('subject').value;
+            
+            document.getElementById('preview-subject').textContent = subject;
+            document.getElementById('preview-to').textContent = `${name} (${email})`;
+            
+            let content, type;
+            if (document.getElementById('SimpleTab').style.display === 'block') {
+                content = document.getElementById('htmlContent').value;
+                type = "HTML Simple";
+            } else if (document.getElementById('FullTab').style.display === 'block') {
+                content = document.getElementById('fullHtmlContent').value;
+                type = "HTML Completo";
+            } else {
+                content = document.getElementById('textContent').value;
+                type = "Texto Plano";
+            }
+            
+            document.getElementById('preview-type').textContent = type;
+            
+            if (type === "Texto Plano") {
+                document.getElementById('preview-content').innerHTML = `<pre>${content}</pre>`;
+            } else {
+                // Extract body content for preview
+                const bodyStart = content.indexOf('<body>');
+                const bodyEnd = content.indexOf('</body>');
+                if (bodyStart !== -1 && bodyEnd !== -1) {
+                    const bodyContent = content.substring(bodyStart + 6, bodyEnd);
+                    document.getElementById('preview-content').innerHTML = bodyContent;
+                } else {
+                    document.getElementById('preview-content').innerHTML = content;
+                }
+            }
+        }
+        
+        // Update preview when inputs change
+        document.getElementById('email').addEventListener('input', updatePreview);
+        document.getElementById('name').addEventListener('input', updatePreview);
+        document.getElementById('subject').addEventListener('input', updatePreview);
+        document.getElementById('htmlContent').addEventListener('input', updatePreview);
+        document.getElementById('fullHtmlContent').addEventListener('input', updatePreview);
+        document.getElementById('textContent').addEventListener('input', updatePreview);
+        
+        // Initialize preview
+        updatePreview();
         
         async function sendTest() {
             const email = document.getElementById('email').value;
             const name = document.getElementById('name').value;
             const subject = document.getElementById('subject').value;
             
-            // Obtener el contenido HTML según la pestaña activa
-            let htmlContent;
+            // Obtener el contenido según la pestaña activa
+            let content, contentType;
             if (document.getElementById('SimpleTab').style.display === 'block') {
-                htmlContent = document.getElementById('htmlContent').value;
+                content = document.getElementById('htmlContent').value;
+                contentType = 'htmlContent';
+            } else if (document.getElementById('FullTab').style.display === 'block') {
+                content = document.getElementById('fullHtmlContent').value;
+                contentType = 'htmlContent';
             } else {
-                htmlContent = document.getElementById('fullHtmlContent').value;
+                content = document.getElementById('textContent').value;
+                contentType = 'textContent';
             }
             
             // Validar email
@@ -404,18 +450,27 @@ async function sendTest() {
             statusDiv.textContent = 'Enviando email...';
             
             try {
+                const requestBody = {
+                    sender: { email: "you@yourdomain.com", name: "Step Up Events" },
+                    to: [{ email: email, name: name }],
+                    subject: subject
+                };
+                
+                // Add content based on type
+                if (contentType === 'htmlContent') {
+                    requestBody.htmlContent = content;
+                } else {
+                    requestBody.textContent = content;
+                }
+                
                 const response = await fetch("https://step-up-eight.vercel.app/api/send-email", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({
-                        sender: { email: "you@yourdomain.com", name: "Step Up Events" },
-                        to: [{ email: email, name: name }],
-                        subject: subject,
-                        htmlContent: htmlContent
-                    })
+                    body: JSON.stringify(requestBody)
                 });
                 
                 const result = await response.json();
+                document.getElementById('debug-info').textContent = JSON.stringify(result, null, 2);
                 
                 if (response.ok) {
                     statusDiv.textContent = "✅ Email enviado! Revisa tu bandeja.";
@@ -427,6 +482,7 @@ async function sendTest() {
             } catch (error) {
                 statusDiv.textContent = "❌ Error de conexión: " + error.message;
                 statusDiv.classList.add('error');
+                document.getElementById('debug-info').textContent = error.message;
             }
         }
     </script>
