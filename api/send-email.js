@@ -1,9 +1,12 @@
+// api/send-email.js
+import brevo from '@getbrevo/brevo'; // Make sure to install the package: npm install @getbrevo/brevo
+
 export default async function handler(req, res) {
   // Handle preflight requests (CORS)
   if (req.method === "OPTIONS") {
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
-    res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type");
     return res.status(200).end();
   }
 
@@ -11,33 +14,47 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
+  // Set CORS headers for the main request
+  res.setHeader("Access-Control-Allow-Origin", "*");
+
   try {
     const { to, subject, text, html } = req.body;
 
-    const data = {
-      from: { email: "info@stepuptherave.club", name: "Step Up Crew" },
-      to: to || [{ email: "junglesoul.c@gmail.com" }],
-      subject: subject || "🔥 Test email from Step Up Crew",
-      text: text || "Hola! Esto es un test de MailerSend desde Vercel ✅",
-      html: html || "<h1 style='color:cyan'>Step Up Crew</h1><p>Correo de prueba ✅</p>"
-    };
+    // 1. Configure the Brevo API client
+    const defaultClient = brevo.ApiClient.instance;
+    const apiKeyAuth = defaultClient.authentications['api-key'];
+    apiKeyAuth.apiKey = process.env.BREVO_API_KEY; // Your Brevo API key from Vercel env vars
 
-    const response = await fetch("https://api.mailersend.com/v1/email", {
-      method: "POST",
-      headers: {
-        "Authorization": `Bearer ${process.env.MAILERSEND_API_KEY}`,
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(data)
+    // 2. Create a new API instance
+    const apiInstance = new brevo.TransactionalEmailsApi();
+
+    // 3. Prepare the email data in Brevo's format
+    const sendSmtpEmail = new brevo.SendSmtpEmail();
+
+    sendSmtpEmail.sender = { email: "info@stepuptherave.club", name: "Step Up Crew" };
+    sendSmtpEmail.to = to || [{ email: "junglesoul.c@gmail.com" }];
+    sendSmtpEmail.subject = subject || "🔥 Test email from Step Up Crew";
+    sendSmtpEmail.textContent = text || "Hola! Esto es un test de Brevo desde Vercel ✅";
+    sendSmtpEmail.htmlContent = html || "<h1 style='color:cyan'>Step Up Crew</h1><p>Correo de prueba ✅</p>";
+
+    // 4. Send the email using the Brevo SDK
+    const data = await apiInstance.sendTransacEmail(sendSmtpEmail);
+
+    // 5. Send success response
+    res.status(200).json({ 
+      message: 'Email sent successfully', 
+      messageId: data.messageId 
     });
 
-    const result = await response.json();
-    res.setHeader("Access-Control-Allow-Origin", "*"); // allow frontend calls
-    res.status(200).json(result);
-
   } catch (error) {
-    console.error("MailerSend error:", error);
-    res.setHeader("Access-Control-Allow-Origin", "*"); 
-    res.status(500).json({ error: error.message });
+    console.error("Brevo API error:", error);
+
+    // Brevo SDK errors often have details in `response.body`
+    const errorMessage = error?.response?.body?.message || error.message;
+    
+    res.status(500).json({ 
+      error: "Failed to send email",
+      details: errorMessage 
+    });
   }
 }
