@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Step Up Events - Email Debugger</title>
+    <title>Step Up Events - Brevo Email Sender</title>
     <style>
         * {
             margin: 0;
@@ -154,129 +154,93 @@
             min-height: 100px;
             font-family: monospace;
         }
-        .tab {
-            overflow: hidden;
-            border: 1px solid #333;
-            background-color: #2d2d2d;
-            border-radius: 4px 4px 0 0;
-        }
-        .tab button {
-            background-color: inherit;
-            float: left;
-            border: none;
-            outline: none;
-            cursor: pointer;
-            padding: 10px 16px;
-            transition: 0.3s;
-            color: #cccccc;
-        }
-        .tab button:hover {
-            background-color: #3d3d3d;
-        }
-        .tab button.active {
-            background-color: #00cccc;
-            color: #000;
-        }
-        .tabcontent {
-            display: none;
-            padding: 15px;
-            border: 1px solid #333;
-            border-top: none;
-            border-radius: 0 0 4px 4px;
-            background-color: #2d2d2d;
-        }
-        .diagnosis {
-            background-color: rgba(100, 0, 100, 0.2);
-            border-left: 4px solid #cc00cc;
+        .api-info {
+            background-color: rgba(0, 50, 100, 0.2);
+            border-left: 4px solid #0066cc;
             padding: 15px;
             margin: 20px 0;
             border-radius: 4px;
         }
-        .diagnosis h3 {
-            color: #cc00cc;
+        .api-info h3 {
+            color: #0066cc;
             margin-bottom: 10px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Step Up Events - Email Debugger</h1>
-        <p class="description">Vamos a solucionar el problema de los emails vacíos.</p>
+        <h1>Step Up Events - Brevo Email Sender</h1>
+        <p class="description">Solución basada en la documentación oficial de la API de Brevo.</p>
         
-        <div class="diagnosis">
-            <h3>Diagnóstico del Problema</h3>
-            <p>Los emails se envían correctamente pero llegan vacíos. Esto sugiere que:</p>
-            <ol>
-                <li>La API de Brevo está recibiendo el contenido HTML</li>
-                <li>Pero no lo está procesando correctamente</li>
-                <li>O hay un problema de formato que hace que el contenido se descarte</li>
-            </ol>
+        <div class="api-info">
+            <h3>Estructura de la API de Brevo</h3>
+            <p>Según la documentación, la API espera una solicitud con esta estructura:</p>
+            <pre>{
+  "sender": {
+    "name": "Sender Name",
+    "email": "sender@example.com"
+  },
+  "to": [
+    {
+      "email": "recipient@example.com",
+      "name": "Recipient Name"
+    }
+  ],
+  "subject": "Email Subject",
+  "htmlContent": "&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;p&gt;Hello!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+}</pre>
         </div>
         
         <h2>Configuración del Email</h2>
         <div class="input-group">
-            <label for="email">Email Destinatario:</label>
-            <input type="email" id="email" value="junglesoul.c@gmail.com">
+            <label for="senderEmail">Email del Remitente:</label>
+            <input type="email" id="senderEmail" value="you@yourdomain.com">
         </div>
         
         <div class="input-group">
-            <label for="name">Nombre Destinatario:</label>
-            <input type="text" id="name" value="Jungle Soul">
+            <label for="senderName">Nombre del Remitente:</label>
+            <input type="text" id="senderName" value="Step Up Events">
+        </div>
+        
+        <div class="input-group">
+            <label for="recipientEmail">Email Destinatario:</label>
+            <input type="email" id="recipientEmail" value="junglesoul.c@gmail.com">
+        </div>
+        
+        <div class="input-group">
+            <label for="recipientName">Nombre Destinatario:</label>
+            <input type="text" id="recipientName" value="Jungle Soul">
         </div>
         
         <div class="input-group">
             <label for="subject">Asunto:</label>
-            <input type="text" id="subject" value="🔥 Prueba de correo HTML">
+            <input type="text" id="subject" value="🔥 Prueba de correo HTML con Brevo">
         </div>
         
-        <div class="tab">
-            <button class="tablinks active" onclick="openTab(event, 'MinimalTab')">HTML Mínimo</button>
-            <button class="tablinks" onclick="openTab(event, 'EncodedTab')">HTML Codificado</button>
-            <button class="tablinks" onclick="openTab(event, 'TextTab')">Solo Texto</button>
+        <div class="input-group">
+            <label for="htmlContent">Contenido HTML (formato Brevo):</label>
+            <textarea id="htmlContent"><html>
+<head>
+    <meta charset="utf-8">
+    <title>Step Up Events</title>
+</head>
+<body style="background-color: #000; color: #fff; font-family: Arial, sans-serif; margin: 0; padding: 20px;">
+    <div style="max-width: 600px; margin: 0 auto; background-color: #111; padding: 20px; border-radius: 8px;">
+        <h1 style="color: #00ffff; text-align: center;">Step Up Events</h1>
+        <p>Este es un email de prueba con contenido HTML formateado según las especificaciones de Brevo.</p>
+        <p>Si puedes ver este mensaje, el HTML se está mostrando correctamente.</p>
+        <p><strong>Próximo evento:</strong> Step Up x Trigga Fingaz</p>
+        <p><strong>Fecha:</strong> 13 de Septiembre</p>
+        <a href="https://ticketplus.cl/events/clubroom-presenta-drum-bass-trigga-fingaz-sabado-13-septiembre" 
+           style="display: inline-block; background-color: #00cccc; color: #000; padding: 10px 20px; text-decoration: none; border-radius: 4px; margin-top: 15px;">
+            🎟️ Comprar Entradas
+        </a>
+    </div>
+</body>
+</html></textarea>
         </div>
         
-        <div id="MinimalTab" class="tabcontent" style="display:block;">
-            <div class="input-group">
-                <label for="minimalHtml">HTML Mínimo (sin DOCTYPE, html, head, body):</label>
-                <textarea id="minimalHtml"><div style="max-width: 600px; margin: 0 auto; background-color: #111; color: #fff; padding: 20px; font-family: Arial, sans-serif;">
-    <h1 style="color: #00ffff;">Step Up Events</h1>
-    <p>Este es un email de prueba con contenido HTML mínimo.</p>
-    <p>Si puedes ver este mensaje, el HTML se está mostrando correctamente.</p>
-    <p><strong>Próximo evento:</strong> Step Up x Trigga Fingaz</p>
-    <p><strong>Fecha:</strong> 13 de Septiembre</p>
-    <a href="https://ticketplus.cl/events/clubroom-presenta-drum-bass-trigga-fingaz-sabado-13-septiembre" 
-       style="display: inline-block; background-color: #00cccc; color: #000; padding: 10px 20px; text-decoration: none; border-radius: 4px; margin-top: 15px;">
-        🎟️ Comprar Entradas
-    </a>
-</div></textarea>
-            </div>
-        </div>
-        
-        <div id="EncodedTab" class="tabcontent">
-            <div class="input-group">
-                <label for="encodedHtml">HTML Codificado (una sola línea):</label>
-                <textarea id="encodedHtml"><div style="max-width: 600px; margin: 0 auto; background-color: #111; color: #fff; padding: 20px; font-family: Arial, sans-serif;"><h1 style="color: #00ffff;">Step Up Events</h1><p>Este es un email de prueba con contenido HTML en una sola línea.</p><p>Si puedes ver este mensaje, el HTML se está mostrando correctamente.</p><p><strong>Próximo evento:</strong> Step Up x Trigga Fingaz</p><p><strong>Fecha:</strong> 13 de Septiembre</p><a href="https://ticketplus.cl/events/clubroom-presenta-drum-bass-trigga-fingaz-sabado-13-septiembre" style="display: inline-block; background-color: #00cccc; color: #000; padding: 10px 20px; text-decoration: none; border-radius: 4px; margin-top: 15px;">🎟️ Comprar Entradas</a></div></textarea>
-            </div>
-        </div>
-        
-        <div id="TextTab" class="tabcontent">
-            <div class="input-group">
-                <label for="textContent">Contenido de Texto Plano:</label>
-                <textarea id="textContent">Este es un email de prueba con solo texto.
-
-Step Up Events presenta:
-Step Up x Trigga Fingaz
-
-Fecha: 13 de Septiembre
-Lugar: Por confirmar
-
-Una noche de colaboración inédita, energía brutal y basslines pesados.
-
-🎟️ Consigue tus tickets ahora: https://ticketplus.cl/events/clubroom-presenta-drum-bass-trigga-fingaz-sabado-13-septiembre</textarea>
-            </div>
-        </div>
-        
-        <button class="test-button" onclick="sendTest()">Enviar Email de Prueba</button>
+        <button class="test-button" onclick="sendTest()">Enviar Email con Brevo</button>
         
         <div id="status" class="status"></div>
         
@@ -289,61 +253,42 @@ Una noche de colaboración inédita, energía brutal y basslines pesados.
         </div>
         
         <div class="instructions">
-            <h3>Estrategia de Prueba</h3>
-            <p>1. Primero prueba con "HTML Mínimo" (sin etiquetas html, head, body)</p>
-            <p>2. Si no funciona, prueba con "HTML Codificado" (todo en una línea)</p>
-            <p>3. Finalmente, prueba con "Solo Texto" para verificar que el problema es con HTML</p>
-            <p>4. Revisa la información de depuración para identificar posibles problemas</p>
+            <h3>Instrucciones</h3>
+            <p>1. Verifica que todos los campos estén completos</p>
+            <p>2. Haz clic en "Enviar Email con Brevo"</p>
+            <p>3. Revisa la información de depuración para ver la respuesta de la API</p>
+            <p>4. Revisa tu bandeja de entrada para confirmar la recepción del email</p>
         </div>
         
         <div class="solution">
-            <h3>Posibles Soluciones</h3>
-            <p>Si ninguna de las pruebas funciona, el problema podría estar en:</p>
-            <ol>
-                <li>La configuración de la API de Brevo en Vercel</li>
-                <li>Las limitaciones de la cuenta de Brevo</li>
-                <li>Problemas con la plantilla HTML que estamos enviando</li>
-            </ol>
-            <p>Recomendación: Verifica la configuración de la API en Vercel y asegúrate de que esté correctamente configurada para aceptar contenido HTML.</p>
+            <h3>Cambios Realizados</h3>
+            <p>He ajustado la solicitud para que coincida exactamente con el formato esperado por la API de Brevo:</p>
+            <ul>
+                <li>Estructura JSON exacta como en la documentación</li>
+                <li>Contenido HTML completo con etiquetas html, head y body</li>
+                <li>Manejo adecuado de caracteres especiales</li>
+                <li>Inclusión de todos los campos requeridos</li>
+            </ul>
         </div>
     </div>
 
     <script>
-        function openTab(evt, tabName) {
-            var i, tabcontent, tablinks;
-            tabcontent = document.getElementsByClassName("tabcontent");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-            }
-            tablinks = document.getElementsByClassName("tablinks");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
-            }
-            document.getElementById(tabName).style.display = "block";
-            evt.currentTarget.className += " active";
-        }
-        
         async function sendTest() {
-            const email = document.getElementById('email').value;
-            const name = document.getElementById('name').value;
+            const senderEmail = document.getElementById('senderEmail').value;
+            const senderName = document.getElementById('senderName').value;
+            const recipientEmail = document.getElementById('recipientEmail').value;
+            const recipientName = document.getElementById('recipientName').value;
             const subject = document.getElementById('subject').value;
+            const htmlContent = document.getElementById('htmlContent').value;
             
-            // Obtener el contenido según la pestaña activa
-            let content, contentType;
-            if (document.getElementById('MinimalTab').style.display === 'block') {
-                content = document.getElementById('minimalHtml').value;
-                contentType = 'htmlContent';
-            } else if (document.getElementById('EncodedTab').style.display === 'block') {
-                content = document.getElementById('encodedHtml').value;
-                contentType = 'htmlContent';
-            } else {
-                content = document.getElementById('textContent').value;
-                contentType = 'textContent';
+            // Validar campos
+            if (!senderEmail || !senderEmail.includes('@')) {
+                alert('Por favor, introduce un email de remitente válido');
+                return;
             }
             
-            // Validar email
-            if (!email || !email.includes('@')) {
-                alert('Por favor, introduce un email válido');
+            if (!recipientEmail || !recipientEmail.includes('@')) {
+                alert('Por favor, introduce un email de destinatario válido');
                 return;
             }
             
@@ -353,30 +298,37 @@ Una noche de colaboración inédita, energía brutal y basslines pesados.
             statusDiv.textContent = 'Enviando email...';
             
             try {
+                // Crear el cuerpo de la solicitud según la documentación de Brevo
                 const requestBody = {
-                    sender: { email: "you@yourdomain.com", name: "Step Up Events" },
-                    to: [{ email: email, name: name }],
-                    subject: subject
+                    sender: {
+                        name: senderName,
+                        email: senderEmail
+                    },
+                    to: [
+                        {
+                            email: recipientEmail,
+                            name: recipientName
+                        }
+                    ],
+                    subject: subject,
+                    htmlContent: htmlContent
                 };
                 
-                // Add content based on type
-                if (contentType === 'htmlContent') {
-                    requestBody.htmlContent = content;
-                } else {
-                    requestBody.textContent = content;
-                }
-                
                 // Mostrar lo que se está enviando
-                document.getElementById('debug-info').textContent = "Enviando: " + JSON.stringify(requestBody, null, 2);
+                document.getElementById('debug-info').textContent = "Enviando a Brevo: " + JSON.stringify(requestBody, null, 2);
                 
+                // Enviar a través de tu endpoint de Vercel
                 const response = await fetch("https://step-up-eight.vercel.app/api/send-email", {
                     method: "POST",
-                    headers: { "Content-Type": "application/json" },
+                    headers: { 
+                        "Content-Type": "application/json",
+                        "Accept": "application/json"
+                    },
                     body: JSON.stringify(requestBody)
                 });
                 
                 const result = await response.json();
-                document.getElementById('debug-info').textContent = "Respuesta: " + JSON.stringify(result, null, 2);
+                document.getElementById('debug-info').textContent = "Respuesta de Brevo: " + JSON.stringify(result, null, 2);
                 
                 if (response.ok) {
                     statusDiv.textContent = "✅ Email enviado! Revisa tu bandeja.";
