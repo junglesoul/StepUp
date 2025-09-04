@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Step Up Events - Email Debugger</title>
+    <title>Step Up Events - HTML Email Tester</title>
     <style>
         * {
             margin: 0;
@@ -87,22 +87,22 @@
             border: 1px solid #cc0000;
             color: #ff6666;
         }
-        .debug {
-            background-color: rgba(100, 100, 100, 0.2);
-            border: 1px solid #666666;
+        .email-preview {
+            background-color: #000;
             border-radius: 8px;
-            padding: 15px;
+            padding: 20px;
             margin: 20px 0;
         }
-        .debug h3 {
-            color: #cccccc;
-            margin-bottom: 10px;
+        .email-preview img {
+            max-width: 100%;
+            border-radius: 6px;
+            margin: 10px 0;
         }
-        .debug-info {
+        .code-container {
             background-color: #2d2d2d;
             border-radius: 8px;
-            padding: 15px;
-            margin-top: 10px;
+            padding: 20px;
+            margin-top: 20px;
             overflow-x: auto;
         }
         pre {
@@ -134,18 +134,6 @@
             color: #cccc00;
             margin-bottom: 10px;
         }
-        .error-details {
-            background-color: rgba(200, 0, 0, 0.1);
-            border: 1px solid #cc0000;
-            border-radius: 8px;
-            padding: 15px;
-            margin: 20px 0;
-            color: #ff6666;
-        }
-        .error-details h3 {
-            color: #ff6666;
-            margin-bottom: 10px;
-        }
         .input-group {
             margin: 15px 0;
         }
@@ -154,7 +142,7 @@
             margin-bottom: 5px;
             color: #cccccc;
         }
-        .input-group input {
+        .input-group input, .input-group textarea {
             width: 100%;
             padding: 10px;
             border-radius: 4px;
@@ -162,30 +150,60 @@
             background-color: #2d2d2d;
             color: #ffffff;
         }
+        .input-group textarea {
+            min-height: 100px;
+            font-family: monospace;
+        }
+        .tab {
+            overflow: hidden;
+            border: 1px solid #333;
+            background-color: #2d2d2d;
+            border-radius: 4px 4px 0 0;
+        }
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 10px 16px;
+            transition: 0.3s;
+            color: #cccccc;
+        }
+        .tab button:hover {
+            background-color: #3d3d3d;
+        }
+        .tab button.active {
+            background-color: #00cccc;
+            color: #000;
+        }
+        .tabcontent {
+            display: none;
+            padding: 15px;
+            border: 1px solid #333;
+            border-top: none;
+            border-radius: 0 0 4px 4px;
+            background-color: #2d2d2d;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Step Up Events - Email Debugger</h1>
-        <p class="description">Esta herramienta te ayudará a identificar el problema con el envío de emails a través de la API de Brevo.</p>
-        
-        <div class="error-details">
-            <h3>Error Detectado</h3>
-            <p>La API de Brevo está devolviendo el error: <code>{"code":"missing_parameter","message":"email is missing in to"}</code></p>
-            <p>Esto indica que hay un problema con la estructura de los datos que se envían a la API.</p>
-        </div>
+        <h1>Step Up Events - HTML Email Tester</h1>
+        <p class="description">Ahora que los emails se envían correctamente, vamos a solucionar el problema de visualización del contenido HTML.</p>
         
         <div class="solution">
-            <h3>Posibles Soluciones</h3>
-            <ol>
-                <li>Verifica que el array "to" no contenga objetos vacíos</li>
-                <li>Asegúrate de que todos los objetos en "to" tengan una propiedad "email" válida</li>
-                <li>Comprueba que el JSON esté correctamente formateado</li>
-                <li>Prueba con un solo destinatario primero</li>
-            </ol>
+            <h3>Problema Identificado</h3>
+            <p>El contenido HTML no se muestra en el email, solo aparece el asunto y el remitente.</p>
+            <p>Posibles causas:</p>
+            <ul>
+                <li>Problemas de formato en el contenido HTML</li>
+                <li>Falta de etiquetas HTML esenciales (html, head, body)</li>
+                <li>Filtrado de contenido por el cliente de correo</li>
+            </ul>
         </div>
         
-        <h2>Prueba de Envío</h2>
+        <h2>Configuración del Email</h2>
         <div class="input-group">
             <label for="email">Email Destinatario:</label>
             <input type="email" id="email" value="junglesoul.c@gmail.com">
@@ -196,41 +214,120 @@
             <input type="text" id="name" value="Jungle Soul">
         </div>
         
-        <button class="test-button" onclick="sendTest()">Probar Envío</button>
+        <div class="input-group">
+            <label for="subject">Asunto:</label>
+            <input type="text" id="subject" value="🔥 Prueba de correo HTML">
+        </div>
         
-        <div id="status" class="status"></div>
+        <div class="tab">
+            <button class="tablinks active" onclick="openTab(event, 'SimpleTab')">Contenido Simple</button>
+            <button class="tablinks" onclick="openTab(event, 'FullTab')">HTML Completo</button>
+        </div>
         
-        <div class="debug">
-            <h3>Información de Depuración</h3>
-            <p>Última respuesta de la API:</p>
-            <div class="debug-info">
-                <pre id="debug-info">Esperando prueba...</pre>
+        <div id="SimpleTab" class="tabcontent" style="display:block;">
+            <div class="input-group">
+                <label for="htmlContent">Contenido HTML:</label>
+                <textarea id="htmlContent">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Step Up Events&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div style="max-width: 600px; margin: 0 auto; background-color: #111; color: #fff; padding: 20px; font-family: Arial, sans-serif;"&gt;
+        &lt;h1 style="color: #00ffff;"&gt;Step Up Events&lt;/h1&gt;
+        &lt;p&gt;Este es un email de prueba con contenido HTML.&lt;/p&gt;
+        &lt;p&gt;Si puedes ver este mensaje, el HTML se está mostrando correctamente.&lt;/p&gt;
+        &lt;p&gt;&lt;strong&gt;Próximo evento:&lt;/strong&gt; Step Up x Trigga Fingaz&lt;/p&gt;
+        &lt;p&gt;&lt;strong&gt;Fecha:&lt;/strong&gt; 13 de Septiembre&lt;/p&gt;
+        &lt;a href="https://ticketplus.cl/events/clubroom-presenta-drum-bass-trigga-fingaz-sabado-13-septiembre" 
+           style="display: inline-block; background-color: #00cccc; color: #000; padding: 10px 20px; text-decoration: none; border-radius: 4px; margin-top: 15px;"&gt;
+            🎟️ Comprar Entradas
+        &lt;/a&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</textarea>
             </div>
         </div>
         
-        <div class="instructions">
-            <h3>Instrucciones de Uso</h3>
-            <p>1. Verifica que los datos del destinatario sean correctos</p>
-            <p>2. Haz clic en el botón "Probar Envío"</p>
-            <p>3. Revisa la información de depuración para identificar el problema</p>
-            <p>4. Si el envío es exitoso, prueba con el contenido HTML completo</p>
+        <div id="FullTab" class="tabcontent">
+            <div class="input-group">
+                <label for="fullHtmlContent">HTML Completo (Evento):</label>
+                <textarea id="fullHtmlContent">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Step Up Events&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#000000" style="background-color:#000000; margin:0; padding:0;"&gt;
+        &lt;tr&gt;
+            &lt;td align="center"&gt;
+                &lt;img src="https://stepuptherave.club/WPTG1309.png" alt="Background Banner" width="100%" style="max-width: 600px; display: block; border: 0; margin: 0 auto;" /&gt;
+                &lt;table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="max-width: 600px; margin: 0 auto; background-color:#111111; border-radius: 12px; overflow: hidden;"&gt;
+                    &lt;tr&gt;
+                        &lt;td align="center" style="padding: 30px 20px 20px 20px; color: #ffffff;"&gt;
+                            &lt;h1 style="font-size: 26px; line-height: 1.3; font-weight: bold; margin: 0 0 20px 0;"&gt;
+                                Estamos de vuelta: Step Up x Trigga Fingaz
+                            &lt;/h1&gt;
+                            &lt;p style="font-size: 16px; line-height: 1.5; color: #cccccc; margin: 0 0 30px 0;"&gt;
+                                Una noche de colaboración inédita, energía brutal y basslines pesados.
+                            &lt;/p&gt;
+                            &lt;a href="https://ticketplus.cl/events/clubroom-presenta-drum-bass-trigga-fingaz-sabado-13-septiembre"
+                               target="_blank"
+                               style="display: inline-block; background-color: transparent; border: 2px solid #00ffff; color: #00ffff; text-decoration: none; padding: 12px 24px; font-weight: bold; font-size: 16px; border-radius: 30px;"&gt;
+                                🎟️ Consigue tus tickets ahora
+                            &lt;/a&gt;
+                        &lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td align="center" style="padding: 20px;"&gt;
+                            &lt;img src="https://stepuptherave.club/TG1309.png" alt="Trigga Fingaz Flyer" width="100%" style="max-width: 500px; height: auto; border-radius: 10px; display: block; margin: 0 auto; box-shadow: 0 4px 12px rgba(0,0,0,0.4);" /&gt;
+                        &lt;/td&gt;
+                    &lt;/tr&gt;
+                &lt;/table&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/table&gt;
+&lt;/body&gt;
+&lt;/html&gt;</textarea>
+            </div>
         </div>
         
-        <h2>Código de Prueba</h2>
-        <div class="debug-info">
+        <button class="test-button" onclick="sendTest()">Enviar Email con HTML</button>
+        
+        <div id="status" class="status"></div>
+        
+        <div class="instructions">
+            <h3>Instrucciones</h3>
+            <p>1. Selecciona el tipo de contenido HTML que deseas enviar</p>
+            <p>2. Haz clic en "Enviar Email con HTML"</p>
+            <p>3. Revisa tu bandeja de entrada para verificar que el HTML se muestra correctamente</p>
+            <p>4. Si el HTML simple funciona, prueba con el HTML completo del evento</p>
+        </div>
+        
+        <h2>Código de Solución</h2>
+        <div class="code-container">
             <pre>
-// Función de prueba simplificada
+// Solución para el contenido HTML en emails
 async function sendTest() {
     const email = document.getElementById('email').value;
     const name = document.getElementById('name').value;
+    const subject = document.getElementById('subject').value;
+    
+    // Obtener el contenido HTML según la pestaña activa
+    let htmlContent;
+    if (document.getElementById('SimpleTab').style.display === 'block') {
+        htmlContent = document.getElementById('htmlContent').value;
+    } else {
+        htmlContent = document.getElementById('fullHtmlContent').value;
+    }
     
     // Validar email
     if (!email || !email.includes('@')) {
         alert('Por favor, introduce un email válido');
         return;
     }
-    
-    const htmlContent = '&lt;p&gt;Este es un email de prueba.&lt;/p&gt;';
     
     const statusDiv = document.getElementById('status');
     statusDiv.style.display = 'block';
@@ -244,13 +341,12 @@ async function sendTest() {
             body: JSON.stringify({
                 sender: { email: "you@yourdomain.com", name: "Step Up Events" },
                 to: [{ email: email, name: name }],
-                subject: "🔥 Prueba de correo",
+                subject: subject,
                 htmlContent: htmlContent
             })
         });
         
         const result = await response.json();
-        document.getElementById('debug-info').textContent = JSON.stringify(result, null, 2);
         
         if (response.ok) {
             statusDiv.textContent = "✅ Email enviado! Revisa tu bandeja.";
@@ -262,7 +358,6 @@ async function sendTest() {
     } catch (error) {
         statusDiv.textContent = "❌ Error de conexión: " + error.message;
         statusDiv.classList.add('error');
-        document.getElementById('debug-info').textContent = error.message;
     }
 }
             </pre>
@@ -270,17 +365,38 @@ async function sendTest() {
     </div>
 
     <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+        
         async function sendTest() {
             const email = document.getElementById('email').value;
             const name = document.getElementById('name').value;
+            const subject = document.getElementById('subject').value;
+            
+            // Obtener el contenido HTML según la pestaña activa
+            let htmlContent;
+            if (document.getElementById('SimpleTab').style.display === 'block') {
+                htmlContent = document.getElementById('htmlContent').value;
+            } else {
+                htmlContent = document.getElementById('fullHtmlContent').value;
+            }
             
             // Validar email
             if (!email || !email.includes('@')) {
                 alert('Por favor, introduce un email válido');
                 return;
             }
-            
-            const htmlContent = '<p>Este es un email de prueba.</p>';
             
             const statusDiv = document.getElementById('status');
             statusDiv.style.display = 'block';
@@ -294,13 +410,12 @@ async function sendTest() {
                     body: JSON.stringify({
                         sender: { email: "you@yourdomain.com", name: "Step Up Events" },
                         to: [{ email: email, name: name }],
-                        subject: "🔥 Prueba de correo",
+                        subject: subject,
                         htmlContent: htmlContent
                     })
                 });
                 
                 const result = await response.json();
-                document.getElementById('debug-info').textContent = JSON.stringify(result, null, 2);
                 
                 if (response.ok) {
                     statusDiv.textContent = "✅ Email enviado! Revisa tu bandeja.";
@@ -312,7 +427,6 @@ async function sendTest() {
             } catch (error) {
                 statusDiv.textContent = "❌ Error de conexión: " + error.message;
                 statusDiv.classList.add('error');
-                document.getElementById('debug-info').textContent = error.message;
             }
         }
     </script>
