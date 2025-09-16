@@ -38,12 +38,19 @@
       color: var(--secondary-crema);
     }
 
-    .section-height {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
+   .section-height {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .section-height {
+    min-height: 100vh; /* keep equal height also on mobile */
+    padding: 4rem 0;
+  }
+}
 
     .sticky-header {
       position: fixed;
