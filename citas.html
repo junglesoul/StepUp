@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Citas Rápidas | Vinculemos</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Vinculemos: Citas Rápidas. Conoce nuevas personas en encuentros dinámicos y entretenidos.">
+  <meta name="keywords" content="citas rápidas, speed dating, encuentros express, vínculos reales, eventos para solteros">
+  <meta name="author" content="Vinculemos">
+  <meta property="og:title" content="Citas Rápidas | Vinculemos">
+  <meta property="og:description" content="Encuentros rápidos y dinámicos para romper el hielo y generar conexiones reales.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://vinculemos.cl/citas-rapidas.html">
+  
+  <!-- External Libraries -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary-magenta: #FF0079;
+      --primary-azul: #092E3E;
+      --secondary-rosa: #FC89C6;
+      --secondary-celeste: #7784CF;
+      --secondary-crema: #EBE1D9;
+    }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(135deg, var(--primary-azul) 0%, #1a3b4e 100%);
+      color: var(--secondary-crema);
+    }
+    .sticky-header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(9, 46, 62, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 0, 121, 0.2);
+    }
+    .section-height {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: 6rem;
+    }
+    .card-hover {
+      transition: all 0.3s ease;
+      overflow: hidden;
+    }
+    .card-hover:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(255, 0, 121, 0.2);
+    }
+    .video-hover {
+      position: relative;
+      overflow: hidden;
+      height: 200px;
+    }
+    .video-hover iframe {
+      width: 100%;
+      height: 100%;
+    }
+    .btn-primary {
+      background: var(--primary-magenta);
+      color: white;
+      border: 2px solid var(--primary-magenta);
+      transition: all 0.3s ease;
+    }
+    .btn-primary:hover {
+      background: transparent;
+      color: var(--primary-magenta);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="sticky-header">
+    <div class="container mx-auto px-4">
+      <div class="flex justify-between items-center py-4">
+        <div class="flex items-center space-x-3">
+          <span class="text-2xl font-bold" style="color: var(--primary-magenta);">VINCU</span>
+          <span class="text-2xl font-bold text-white">LEMOS</span>
+        </div>
+        <nav class="hidden md:flex space-x-8">
+          <a href="index.html#inicio" class="hover:text-pink-400">Inicio</a>
+          <a href="index.html#experiencias" class="hover:text-pink-400">Experiencias</a>
+          <a href="index.html#nosotros" class="hover:text-pink-400">Nosotros</a>
+          <a href="index.html#contacto" class="hover:text-pink-400">Contacto</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Section -->
+  <section class="section-height py-20">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h1 class="text-5xl md:text-6xl font-bold mb-6">
+          <span style="color: var(--primary-magenta);">Citas Rápidas</span>
+        </h1>
+        <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+          Vive experiencias dinámicas y divertidas para conocer personas reales en un ambiente auténtico.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Card 1 -->
+        <div class="card-hover bg-slate-800/50 rounded-xl overflow-hidden border border-slate-700">
+          <div class="video-hover">
+            <iframe 
+              src="https://www.youtube.com/embed/5qap5aO4i9A?autoplay=1&mute=1&loop=1&playlist=5qap5aO4i9A&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3"
+              frameborder="0" allow="autoplay; encrypted-media; gyroscope" allowfullscreen>
+            </iframe>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-3">Encuentros Express</h3>
+            <p class="text-gray-400 mb-4">Conoce varias personas en una sola noche con citas cortas y dinámicas.</p>
+            <a href="encuentros-express.html" class="btn-primary px-6 py-2 rounded-lg font-semibold inline-block">Conocer más</a>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card-hover bg-slate-800/50 rounded-xl overflow-hidden border border-slate-700">
+          <div class="video-hover">
+            <iframe 
+              src="https://www.youtube.com/embed/jfKfPfyJRdk?autoplay=1&mute=1&loop=1&playlist=jfKfPfyJRdk&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3"
+              frameborder="0" allow="autoplay; encrypted-media; gyroscope" allowfullscreen>
+            </iframe>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-3">Citas Temáticas</h3>
+            <p class="text-gray-400 mb-4">Eventos con temáticas específicas que facilitan la conversación y conexión.</p>
+            <a href="citas-tematicas.html" class="btn-primary px-6 py-2 rounded-lg font-semibold inline-block">Conocer más</a>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card-hover bg-slate-800/50 rounded-xl overflow-hidden border border-slate-700">
+          <div class="video-hover">
+            <iframe 
+              src="https://www.youtube.com/embed/L7OaV9p5hIc?autoplay=1&mute=1&loop=1&playlist=L7OaV9p5hIc&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3"
+              frameborder="0" allow="autoplay; encrypted-media; gyroscope" allowfullscreen>
+            </iframe>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-3">Speed Dating Nocturno</h3>
+            <p class="text-gray-400 mb-4">Ambiente relajado con música y cocktails para conocer personas interesantes.</p>
+            <a href="speed-dating.html" class="btn-primary px-6 py-2 rounded-lg font-semibold inline-block">Conocer más</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-12 border-t border-slate-700">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="flex items-center space-x-3 mb-6 md:mb-0">
+          <span class="text-2xl font-bold" style="color: var(--primary-magenta);">VINCU</span>
+          <span class="text-2xl font-bold text-white">LEMOS</span>
+        </div>
+        <div class="text-center md:text-right">
+          <p class="text-gray-400">© 2023 Vinculemos. Todos los derechos reservados.</p>
+          <p class="text-gray-400 text-sm mt-1">Conectando personas en la vida real</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
