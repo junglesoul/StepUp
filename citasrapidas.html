@@ -54,26 +54,14 @@
       backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(255, 0, 121, 0.2);
     }
-    .hero-video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      opacity: 0.15;
-      object-fit: cover;
-    }
-    .card-hover {
-      transition: all 0.3s ease;
+    .video-hover {
+      position: relative;
       overflow: hidden;
     }
-    .card-hover:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 40px rgba(255, 0, 121, 0.2);
+    .video-hover iframe {
+      width: 100%;
+      height: 100%;
     }
-    .video-hover { position: relative; overflow: hidden; }
-    .video-hover iframe { transition: transform 0.3s ease; }
-    .video-hover:hover iframe { transform: scale(1.05); }
     .floating-whatsapp {
       position: fixed;
       bottom: 20px;
@@ -137,15 +125,14 @@
         </p>
       </div>
 
-      <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div class="grid lg:grid-cols-2 gap-12 items-center mb-20">
         <!-- Video -->
-        <div class="video-hover rounded-xl overflow-hidden border border-slate-700 shadow-lg">
+        <div class="video-hover rounded-xl overflow-hidden border border-slate-700 shadow-lg h-80">
           <iframe 
-            class="w-full h-80"
-            src="https://www.youtube.com/embed/5qap5aO4i9A?autoplay=0&mute=1&loop=1&playlist=5qap5aO4i9A&controls=1&showinfo=0&rel=0"
+            src="https://www.youtube.com/embed/5qap5aO4i9A?autoplay=1&mute=1&loop=1&playlist=5qap5aO4i9A&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3"
             title="Encuentros Express Vinculemos"
             frameborder="0"
-            allow="accelerometer; autoplay; encrypted-media; gyroscope"
+            allow="autoplay; encrypted-media; gyroscope"
             allowfullscreen>
           </iframe>
         </div>
@@ -160,11 +147,61 @@
             <li><i class="fas fa-users mr-2" style="color: var(--primary-magenta);"></i> Grupos reducidos para mayor cercanía</li>
           </ul>
           <div class="mt-8">
-            <a href="index.html#formulario" class="btn-primary px-8 py-4 rounded-lg font-semibold transition-all inline-flex items-center">
+            <a href="#formulario" class="btn-primary px-8 py-4 rounded-lg font-semibold transition-all inline-flex items-center">
               Participar <i class="fas fa-arrow-right ml-2"></i>
             </a>
           </div>
         </div>
+      </div>
+
+      <!-- Payment Form Section -->
+      <div id="formulario" class="bg-slate-800/50 backdrop-blur-sm rounded-xl p-8 border border-slate-700 max-w-3xl mx-auto">
+        <h2 class="text-3xl font-bold mb-6 text-center">Reserva tu cupo</h2>
+        <form action="https://formsubmit.co/vinculemos.marketingdigital@gmail.com" method="POST" class="space-y-6">
+          <input type="hidden" name="_subject" value="Nueva inscripción Encuentros Express">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://vinculemos.cl/gracias.html">
+          
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <label for="nombre" class="block text-sm font-medium mb-2">Nombre</label>
+              <input type="text" id="nombre" name="nombre" required class="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg focus:border-pink-400 focus:outline-none transition-colors">
+            </div>
+            <div>
+              <label for="apellido" class="block text-sm font-medium mb-2">Apellido</label>
+              <input type="text" id="apellido" name="apellido" required class="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg focus:border-pink-400 focus:outline-none transition-colors">
+            </div>
+          </div>
+          
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <label for="email" class="block text-sm font-medium mb-2">Correo Electrónico</label>
+              <input type="email" id="email" name="email" required class="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg focus:border-pink-400 focus:outline-none transition-colors">
+            </div>
+            <div>
+              <label for="telefono" class="block text-sm font-medium mb-2">Teléfono</label>
+              <input type="tel" id="telefono" name="telefono" required class="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg focus:border-pink-400 focus:outline-none transition-colors">
+            </div>
+          </div>
+          
+          <div>
+            <label for="fecha_nacimiento" class="block text-sm font-medium mb-2">Fecha de Nacimiento</label>
+            <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required class="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg focus:border-pink-400 focus:outline-none transition-colors">
+          </div>
+          
+          <div class="bg-slate-700 p-4 rounded-lg mb-6">
+            <div class="flex items-center justify-between mb-2">
+              <span>Valor de la experiencia:</span>
+              <span class="font-semibold">$25.000 CLP</span>
+            </div>
+            <div class="text-sm text-gray-400">* El pago confirma tu reserva en el evento</div>
+          </div>
+          
+          <button type="submit" class="w-full bg-green-500 text-white py-4 rounded-lg font-semibold hover:bg-green-400 transition-all flex items-center justify-center space-x-2">
+            <span>Pagar con Mercado Pago</span>
+            <i class="fas fa-lock"></i>
+          </button>
+        </form>
       </div>
     </div>
   </section>
@@ -192,7 +229,7 @@
   </footer>
 
   <!-- Floating WhatsApp Button -->
-  <a href="https://wa.me/56912345678?text=Hola%20Vinculemos,%20me%20interesa%20participar%20en%20Encuentros%20Express" target="_blank" class="floating-whatsapp">
+  <a href="https://wa.me/56912345678?text=Hola%20Vinculemos,%20quiero%20reservar%20Encuentros%20Express" target="_blank" class="floating-whatsapp">
     <i class="fab fa-whatsapp text-white text-2xl"></i>
   </a>
 </body>
