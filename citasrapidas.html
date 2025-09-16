@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Encuentros Express | Vinculemos</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Vinculemos: Encuentros Express. Citas rápidas para conocer varias personas en una sola noche de manera divertida y dinámica.">
+  <meta name="keywords" content="citas rápidas, speed dating, encuentros express, vínculos reales, eventos para solteros">
+  <meta name="author" content="Vinculemos">
+  <meta property="og:title" content="Encuentros Express | Vinculemos">
+  <meta property="og:description" content="Conoce varias personas en una sola noche a través de citas cortas y dinámicas.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://vinculemos.cl/encuentros-express.html">
+  
+  <!-- External Libraries -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary-magenta: #FF0079;
+      --primary-azul: #092E3E;
+      --secondary-rosa: #FC89C6;
+      --secondary-celeste: #7784CF;
+      --secondary-crema: #EBE1D9;
+    }
+    * { scroll-behavior: smooth; }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(135deg, var(--primary-azul) 0%, #1a3b4e 100%);
+      color: var(--secondary-crema);
+    }
+    .section-height {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    @media (max-width: 768px) {
+      .section-height {
+        min-height: 100vh;
+        padding: 4rem 0;
+      }
+    }
+    .sticky-header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(9, 46, 62, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 0, 121, 0.2);
+    }
+    .hero-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.15;
+      object-fit: cover;
+    }
+    .card-hover {
+      transition: all 0.3s ease;
+      overflow: hidden;
+    }
+    .card-hover:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(255, 0, 121, 0.2);
+    }
+    .video-hover { position: relative; overflow: hidden; }
+    .video-hover iframe { transition: transform 0.3s ease; }
+    .video-hover:hover iframe { transform: scale(1.05); }
+    .floating-whatsapp {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+      width: 60px;
+      height: 60px;
+      background: #25d366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+      transition: all 0.3s ease;
+    }
+    .floating-whatsapp:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
+    }
+    .btn-primary {
+      background: var(--primary-magenta);
+      color: white;
+      border: 2px solid var(--primary-magenta);
+    }
+    .btn-primary:hover {
+      background: transparent;
+      color: var(--primary-magenta);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Sticky Header -->
+  <header class="sticky-header">
+    <div class="container mx-auto px-4">
+      <div class="flex justify-between items-center py-4">
+        <div class="flex items-center space-x-3">
+          <span class="text-2xl font-bold" style="color: var(--primary-magenta);">VINCU</span>
+          <span class="text-2xl font-bold text-white">LEMOS</span>
+        </div>
+        <nav class="hidden md:flex space-x-8">
+          <a href="index.html#inicio" class="hover:text-pink-400 transition-colors">Inicio</a>
+          <a href="index.html#experiencias" class="hover:text-pink-400 transition-colors">Experiencias</a>
+          <a href="index.html#nosotros" class="hover:text-pink-400 transition-colors">Nosotros</a>
+          <a href="index.html#contacto" class="hover:text-pink-400 transition-colors">Contacto</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Experience Detail Section -->
+  <section class="section-height py-20 relative overflow-hidden">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h1 class="text-5xl md:text-6xl font-bold mb-6">
+          <span style="color: var(--primary-magenta);">Encuentros Express</span>
+        </h1>
+        <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+          Conoce varias personas en una sola noche a través de citas cortas y dinámicas.  
+          Perfecto para romper el hielo y descubrir nuevas conexiones.
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <!-- Video -->
+        <div class="video-hover rounded-xl overflow-hidden border border-slate-700 shadow-lg">
+          <iframe 
+            class="w-full h-80"
+            src="https://www.youtube.com/embed/5qap5aO4i9A?autoplay=0&mute=1&loop=1&playlist=5qap5aO4i9A&controls=1&showinfo=0&rel=0"
+            title="Encuentros Express Vinculemos"
+            frameborder="0"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope"
+            allowfullscreen>
+          </iframe>
+        </div>
+
+        <!-- Info -->
+        <div>
+          <h2 class="text-3xl font-bold mb-6">¿Qué te espera?</h2>
+          <ul class="space-y-4 text-lg text-gray-300">
+            <li><i class="fas fa-heart mr-2" style="color: var(--primary-magenta);"></i> Más de 10 mini citas en una sola noche</li>
+            <li><i class="fas fa-music mr-2" style="color: var(--primary-magenta);"></i> Ambiente relajado con música y buena onda</li>
+            <li><i class="fas fa-cocktail mr-2" style="color: var(--primary-magenta);"></i> Incluye 1 cocktail de bienvenida</li>
+            <li><i class="fas fa-users mr-2" style="color: var(--primary-magenta);"></i> Grupos reducidos para mayor cercanía</li>
+          </ul>
+          <div class="mt-8">
+            <a href="index.html#formulario" class="btn-primary px-8 py-4 rounded-lg font-semibold transition-all inline-flex items-center">
+              Participar <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-12 border-t border-slate-700">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="flex items-center space-x-3 mb-6 md:mb-0">
+          <span class="text-2xl font-bold" style="color: var(--primary-magenta);">VINCU</span>
+          <span class="text-2xl font-bold text-white">LEMOS</span>
+        </div>
+        <div class="flex space-x-6 mb-6 md:mb-0">
+          <a href="#" class="text-gray-400 hover:text-pink-400 transition-colors"><i class="fab fa-instagram text-xl"></i></a>
+          <a href="#" class="text-gray-400 hover:text-pink-400 transition-colors"><i class="fab fa-tiktok text-xl"></i></a>
+          <a href="#" class="text-gray-400 hover:text-pink-400 transition-colors"><i class="fab fa-facebook text-xl"></i></a>
+          <a href="#" class="text-gray-400 hover:text-pink-400 transition-colors"><i class="fab fa-youtube text-xl"></i></a>
+        </div>
+        <div class="text-center md:text-right">
+          <p class="text-gray-400">© 2023 Vinculemos. Todos los derechos reservados.</p>
+          <p class="text-gray-400 text-sm mt-1">Conectando personas en la vida real</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/56912345678?text=Hola%20Vinculemos,%20me%20interesa%20participar%20en%20Encuentros%20Express" target="_blank" class="floating-whatsapp">
+    <i class="fab fa-whatsapp text-white text-2xl"></i>
+  </a>
+</body>
+</html>
